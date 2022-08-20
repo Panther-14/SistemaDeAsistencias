@@ -18,13 +18,27 @@ import java.io.FileNotFoundException;
  *
  * @author Panther
  */
-public class ConexionBD {
-    public static Connection abrirConexionBD() {
-        Connection conexion = null;
+public class DataBaseConnection {
+    private Connection conexion;   
+    
+    public Connection getConexion() throws SQLException{
+        conectar();
+        return conexion;
+    }
+    
+    public void desconectar() throws SQLException{
+        if (conexion!=null){
+            if (!conexion.isClosed()){
+                conexion.close();
+            }
+        }
+    }
+    
+    public void conectar() throws SQLException {
         try{
             Path CURRENT_FILE = Paths.get("");
             String directory = CURRENT_FILE.toAbsolutePath().toString();
-            directory = Paths.get(directory, "src", "proyectoconstruccion", "modelo", "dbconfig.txt").toString();
+            directory = Paths.get(directory, "src", "sistemaasistencias", "modelo", "dbconfig.txt").toString();
             System.err.println("File directory is " + directory); // err for debbug
             URL url = new File(directory).toURI().toURL();
             FileInputStream archivoConfiguracion = new FileInputStream(new File(url.getPath()));
@@ -37,17 +51,12 @@ public class ConexionBD {
             String contrasenia = atributos.getProperty("Contrasenia");
             conexion = DriverManager.getConnection(direccionBD, usuario, contrasenia);
         }catch (FileNotFoundException fnfException) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, fnfException);
+            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, fnfException);
         } catch (IOException ioException){
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ioException);
+            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ioException);
         } catch (ClassNotFoundException cnfException) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, cnfException);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return conexion;
+            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, cnfException);
+        } 
     }
-    
-    
     
 }
