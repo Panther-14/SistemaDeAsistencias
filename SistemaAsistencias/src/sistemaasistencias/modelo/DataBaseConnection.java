@@ -38,7 +38,7 @@ public class DataBaseConnection {
         try{
             Path CURRENT_FILE = Paths.get("");
             String directory = CURRENT_FILE.toAbsolutePath().toString();
-            directory = Paths.get(directory, "src", "proyectoconstruccion", "modelo", "dbconfig.txt").toString();
+            directory = Paths.get(directory, "src", "sistemaasistencias", "modelo", "dbconfig.txt").toString();
             System.err.println("File directory is " + directory); // err for debbug
             URL url = new File(directory).toURI().toURL();
             FileInputStream archivoConfiguracion = new FileInputStream(new File(url.getPath()));
@@ -57,10 +57,6 @@ public class DataBaseConnection {
         } catch (ClassNotFoundException cnfException) {
             Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, cnfException);
         } 
-        /*catch (SQLException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return conexion;*/
     }
     
 }

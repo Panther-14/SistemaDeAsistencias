@@ -21,7 +21,7 @@ public class Utilidades {
         alerta.setContentText(mensaje);
         alerta.showAndWait();
     }
-    public static Optional<ButtonType> mostrarAlertas(String titulo, String mensaje, Alert.AlertType tipoAlerta){
+    public static Optional<ButtonType> mostrarAlertaConfirmacion(String titulo, String mensaje, Alert.AlertType tipoAlerta){
         Alert alerta = new Alert(tipoAlerta);
         alerta.setTitle(titulo);
         alerta.setHeaderText(null);

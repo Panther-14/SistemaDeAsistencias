@@ -19,7 +19,10 @@ public class UsuarioDAO {
         Usuario usuarioLogin = new Usuario();
         DataBaseConnection dataBase = new DataBaseConnection();
         SHA_512 encriptador = new SHA_512();
-        String consulta = "SELECT * FROM usuarios WHERE usuario = ? AND contrasenia = ?;";
+        String consulta = "SELECT usuario.nombreUsuario,usuario.idRol,rol.descripcion FROM sistemaasistencias.usuario " +
+                        "INNER JOIN rol " +
+                        "ON usuario.idRol = rol.idRol " +
+                        "WHERE nombreUsuario = ? AND contrasenia = ?;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta); 
             prepararConsulta.setString(1, nombreUsuario);
@@ -35,9 +38,8 @@ public class UsuarioDAO {
             }else{
                 usuarioLogin.setCodigoRespuesta(Constantes.CODIGO_CREDENCIALES_INCORRECTAS);
             }
-        } catch (SQLException e) {
+        } catch (SQLException sqlException) {
             usuarioLogin.setCodigoRespuesta(Constantes.CODIGO_ERROR_CONEXIONBD);
-
         } finally{
             dataBase.desconectar();
         }
