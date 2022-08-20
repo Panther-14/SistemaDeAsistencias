@@ -1,23 +1,30 @@
-# Compiled class file
+# En este archivo van todas las cosas que no queremos que se incluyan 
+# cuando hagamos git add . 
+# debajo de esta linea comenzamos con los archivos separados
+
+
+# Cambios para solucionar conflictos en el merge y las librerias utilizadas
+
+*.log 
+*.a
 *.class
+*.o
 
-# Log file
-*.log
+# permitiendo que el .jar de libs jale
 
-# BlueJ files
-*.ctxt
+!/ProyectoConstruccion/libs/*.jar
+!/ProyectoConstruccion/test/*.jar
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# ahora con las depenendcias
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+/ProyectoConstruccion/*.mf
+/ProyectoConstruccion/*.xml
+/ProyectoConstruccion/dist/
+/ProyectoConstruccion/dist/*.*
+/ProyectoConstruccion/dist/*.jar
+/ProyectoConstruccion/build/
+/ProyectoConstruccion/build/*.*
+/ProyectoConstruccion/build/*.jar
+/ProyectoConstruccion/nbproject/private/private.*
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+#en esta ultima linea ignoramos los private que son los principales conflictos
