@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistemaasistencias.modelo.DAO;
 
 import java.sql.Connection;
@@ -23,8 +18,8 @@ public class RolDAO {
         DataBaseConnection dataBase = new DataBaseConnection();
         String consulta = "SELECT * FROM rol;";
         try (Connection conexion = dataBase.getConexion()) {
-            PreparedStatement sentencia = conexion.prepareStatement(consulta);
-            ResultSet resultadoConsulta = sentencia.executeQuery();
+            PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
+            ResultSet resultadoConsulta = prepararConsulta.executeQuery();
             while(resultadoConsulta.next()){
                 Rol rolEncontrados = new Rol();             
                 rolEncontrados.setIdRol(resultadoConsulta.getInt("idRol"));

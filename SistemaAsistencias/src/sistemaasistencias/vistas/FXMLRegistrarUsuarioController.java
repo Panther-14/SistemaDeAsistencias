@@ -202,7 +202,7 @@ public class FXMLRegistrarUsuarioController implements Initializable {
             if(profesor != null){
                 ProfesorDAO.registrarProfesor(profesor);
             }else if(estudiante != null){
-                EstudianteDAO.registrarProfesor(estudiante);
+                EstudianteDAO.registrarEstudiante(estudiante);
             }
             Utilidades.mostrarAlerta("Usuario Registrado","Bienvenido al sistema.",Alert.AlertType.INFORMATION);
             irPantallaMenu();

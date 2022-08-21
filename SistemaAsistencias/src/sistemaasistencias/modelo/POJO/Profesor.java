@@ -9,9 +9,18 @@ public class Profesor {
     private String nombre;
     private String apellidoPaterno;
     private String apellidodoMaterno;
+    private String nombreCompleto;
     private Usuario usuario;
 
     public Profesor() {
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public int getNumeroEmpleado() {
