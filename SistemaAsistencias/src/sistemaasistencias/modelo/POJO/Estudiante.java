@@ -5,7 +5,7 @@ package sistemaasistencias.modelo.POJO;
  * @author Panther
  */
 public class Estudiante {
-    private int numeroEmpleado;
+    private String matricula;
     private String nombre;
     private String apellidoPaterno;
     private String apellidodoMaterno;
@@ -14,12 +14,12 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public int getNumeroEmpleado() {
-        return numeroEmpleado;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setNumeroEmpleado(int numeroEmpleado) {
-        this.numeroEmpleado = numeroEmpleado;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public String getNombre() {
@@ -52,6 +52,11 @@ public class Estudiante {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" + "matricula=" + matricula + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidodoMaterno=" + apellidodoMaterno + ", usuario=" + usuario + '}';
     }
     
 }

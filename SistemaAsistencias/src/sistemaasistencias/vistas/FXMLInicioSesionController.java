@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistemaasistencias.vistas;
 
 import java.io.IOException;
@@ -57,12 +52,12 @@ public class FXMLInicioSesionController implements Initializable {
         boolean usuarioValido = true;
         
         if(StringUtils.isBlank(nombreUsuario)){
-            lbErrorUsuario.setText("Campo Usuario Requerido");
+            lbErrorUsuario.setText("Campo Obligatorio");
             usuarioValido = false;
         }
         
         if(StringUtils.isBlank(constrasenia)){
-            lbErrorContrasenia.setText("Campo Contraseña Requerido");
+            lbErrorContrasenia.setText("Campo Obligatorio");
             usuarioValido = false;
         }
         
@@ -73,6 +68,7 @@ public class FXMLInicioSesionController implements Initializable {
     
     @FXML
     private void registrarse(ActionEvent event) {
+        irPantallaRegistrarUsuario();
     }
 
     private void validarUsuarioBD(String nombreUsuario, String constrasenia) {
@@ -81,30 +77,43 @@ public class FXMLInicioSesionController implements Initializable {
             switch(usuarioLogin.getCodigoRespuesta()){
                 case Constantes.CODIGO_OPERACION_CORRECTA:
                     Utilidades.mostrarAlerta("Usuario Verificado","Bienvenido al sistema.",Alert.AlertType.INFORMATION);
-                    irPantallaPrincipal();
+                    irPantallaMenu();
                     break;
                 case Constantes.CODIGO_CREDENCIALES_INCORRECTAS:
                     Utilidades.mostrarAlerta("Credenciales incorrectas","Usuario o contraseña incorrectas.",Alert.AlertType.WARNING);
+                    txtUsuario.setText("");
+                    txtContrasenia.setText("");
                     break;
                 case Constantes.CODIGO_ERROR_CONEXIONBD:
                     Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
                     break;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLInicioSesionController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException sqlException) {
+            Logger.getLogger(FXMLInicioSesionController.class.getName()).log(Level.SEVERE, null, sqlException);
         }
     }
 
-    private void irPantallaPrincipal() {
+    private void irPantallaMenu() {
         try{
             Stage escenarioPrincipal = (Stage) txtUsuario.getScene().getWindow();
             Scene menu = new Scene(FXMLLoader.load(getClass().getResource("FXMLMenu.fxml")));
             escenarioPrincipal.setScene(menu);
             escenarioPrincipal.setTitle("Menu");
             escenarioPrincipal.show();
-        } catch (IOException e) {
+        } catch (IOException ioException) {
             Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
         }
     }
     
+    private void irPantallaRegistrarUsuario() {
+        try{
+            Stage escenarioPrincipal = (Stage) txtUsuario.getScene().getWindow();
+            Scene menu = new Scene(FXMLLoader.load(getClass().getResource("FXMLRegistrarUsuario.fxml")));
+            escenarioPrincipal.setScene(menu);
+            escenarioPrincipal.setTitle("Registrar usuario");
+            escenarioPrincipal.show();
+        } catch (IOException ioException) {
+            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar la ventana de registro", Alert.AlertType.ERROR);
+        }
+    }
 }
