@@ -6,11 +6,13 @@ package sistemaasistencias.modelo.POJO;
  */
 public class Usuario {
     
+    public static Usuario usuarioLogin;
+    
     private String nombreUsuario;
     private String contrasenia;
     private Integer codigoRespuesta;
     private Rol rol;
-
+    
     public Usuario() {
     }
 
@@ -44,6 +46,11 @@ public class Usuario {
 
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", codigoRespuesta=" + codigoRespuesta + ", rol=" + rol + '}';
     }
     
 }

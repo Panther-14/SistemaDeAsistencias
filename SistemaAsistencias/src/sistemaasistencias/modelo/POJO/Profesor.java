@@ -53,6 +53,10 @@ public class Profesor {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "numeroEmpleado=" + numeroEmpleado + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidodoMaterno=" + apellidodoMaterno + ", usuario=" + usuario + '}';
+    }
     
 }

@@ -8,6 +8,7 @@ import passwordencryptor.SHA_512;
 import sistemaasistencias.modelo.DataBaseConnection;
 import sistemaasistencias.modelo.POJO.Rol;
 import sistemaasistencias.modelo.POJO.Usuario;
+import static sistemaasistencias.modelo.POJO.Usuario.usuarioLogin;
 import sistemaasistencias.util.Constantes;
 
 /**
@@ -15,8 +16,8 @@ import sistemaasistencias.util.Constantes;
  * @author Panther
  */
 public class UsuarioDAO {
-        public static Usuario iniciarSesion(String nombreUsuario, String contrasenia) throws SQLException{
-        Usuario usuarioLogin = new Usuario();
+    public static Usuario iniciarSesion(String nombreUsuario, String contrasenia) throws SQLException{
+        Usuario.usuarioLogin = new Usuario();
         DataBaseConnection dataBase = new DataBaseConnection();
         SHA_512 encriptador = new SHA_512();
         String consulta = "SELECT usuario.nombreUsuario,usuario.idRol,rol.descripcion FROM sistemaasistencias.usuario " +
@@ -43,6 +44,24 @@ public class UsuarioDAO {
         } finally{
             dataBase.desconectar();
         }
-        return usuarioLogin;
+        return Usuario.usuarioLogin;
+    }
+    
+    public static int registrarUsuario(Usuario usuarioRegistro) throws SQLException{
+        DataBaseConnection dataBase = new DataBaseConnection();
+        SHA_512 encriptador = new SHA_512();
+        int verificacionRegistro;
+        String consulta = "INSERT INTO usuario values(?,?,?);";
+        try(Connection conexion = dataBase.getConexion()){
+            PreparedStatement configurarConsulta = conexion.prepareStatement(consulta);
+            configurarConsulta.setString(1, usuarioRegistro.getNombreUsuario());
+            configurarConsulta.setString(2, encriptador.getSHA512(usuarioRegistro.getContrasenia()));
+            configurarConsulta.setInt(3, usuarioRegistro.getRol().getIdRol());
+            int filasAfectadas = configurarConsulta.executeUpdate();
+            verificacionRegistro = (filasAfectadas == 1) ? Constantes.CODIGO_OPERACION_CORRECTA : Constantes.CODIGO_OPERACION_DML_FALLIDA;;
+        }finally{
+            dataBase.desconectar();
+        }
+        return verificacionRegistro;
     }
 }
