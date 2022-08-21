@@ -2,9 +2,13 @@ package sistemaasistencias.modelo.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import sistemaasistencias.modelo.DataBaseConnection;
 import sistemaasistencias.modelo.POJO.Estudiante;
+import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
+import sistemaasistencias.modelo.POJO.Rol;
 import sistemaasistencias.util.Constantes;
 
 /**
@@ -12,22 +16,47 @@ import sistemaasistencias.util.Constantes;
  * @author Panther
  */
 public class EstudianteDAO {
-    public static int registrarProfesor(Estudiante estudianteRegistro) throws SQLException{
+    public static int registrarEstudiante(Estudiante estudianteRegistro) throws SQLException{
         DataBaseConnection dataBase = new DataBaseConnection();
         int verificacionRegistro;
         String consulta = "INSERT INTO estudiante values(?,?,?,?,?);";
         try(Connection conexion = dataBase.getConexion()){
-            PreparedStatement configurarConsulta = conexion.prepareStatement(consulta);
-            configurarConsulta.setString(1, estudianteRegistro.getMatricula());
-            configurarConsulta.setString(2, estudianteRegistro.getNombre());
-            configurarConsulta.setString(3, estudianteRegistro.getApellidoPaterno());
-            configurarConsulta.setString(4, estudianteRegistro.getApellidodoMaterno());
-            configurarConsulta.setString(5, estudianteRegistro.getUsuario().getNombreUsuario());
-            int filasAfectadas = configurarConsulta.executeUpdate();
+            PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
+            prepararConsulta.setString(1, estudianteRegistro.getMatricula());
+            prepararConsulta.setString(2, estudianteRegistro.getNombre());
+            prepararConsulta.setString(3, estudianteRegistro.getApellidoPaterno());
+            prepararConsulta.setString(4, estudianteRegistro.getApellidodoMaterno());
+            prepararConsulta.setString(5, estudianteRegistro.getUsuario().getNombreUsuario());
+            int filasAfectadas = prepararConsulta.executeUpdate();
             verificacionRegistro = (filasAfectadas == 1) ? Constantes.CODIGO_OPERACION_CORRECTA : Constantes.CODIGO_OPERACION_DML_FALLIDA;;
         }finally{
             dataBase.desconectar();
         }
         return verificacionRegistro;
+    }
+    public static ArrayList<Estudiante> obtenerEstudiantesPorEE(ExperienciaEducativa experienciaEducativa)throws SQLException{
+        ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
+        DataBaseConnection dataBase = new DataBaseConnection();
+        String consulta = "SELECT * FROM estudiante\n" +
+                        "INNER JOIN estudiantecursaee\n" +
+                        "ON estudiante.matricula = estudiantecursaee.matricula\n" +
+                        "INNER JOIN experienciaeducativa\n" +
+                        "ON experienciaeducativa.nrc = estudiantecursaee.nrc\n" +
+                        "WHERE experienciaeducativa.nrc = ?;";
+        try (Connection conexion = dataBase.getConexion()) {
+            PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
+            ResultSet resultadoConsulta = prepararConsulta.executeQuery();
+            while(resultadoConsulta.next()){
+                Estudiante estudianteTemp = new Estudiante();
+                estudianteTemp.setNombre(resultadoConsulta.getString(""));
+                estudianteTemp.setApellidoPaterno(resultadoConsulta.getString(""));
+                estudianteTemp.setApellidodoMaterno(resultadoConsulta.getString(""));
+                estudianteTemp.setMatricula(resultadoConsulta.getString(""));
+                listaEstudiantes.add(estudianteTemp);
+            }
+        } finally {
+            dataBase.desconectar();
+        }
+        return listaEstudiantes;
     }
 }

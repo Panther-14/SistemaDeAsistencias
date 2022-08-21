@@ -53,11 +53,11 @@ public class UsuarioDAO {
         int verificacionRegistro;
         String consulta = "INSERT INTO usuario values(?,?,?);";
         try(Connection conexion = dataBase.getConexion()){
-            PreparedStatement configurarConsulta = conexion.prepareStatement(consulta);
-            configurarConsulta.setString(1, usuarioRegistro.getNombreUsuario());
-            configurarConsulta.setString(2, encriptador.getSHA512(usuarioRegistro.getContrasenia()));
-            configurarConsulta.setInt(3, usuarioRegistro.getRol().getIdRol());
-            int filasAfectadas = configurarConsulta.executeUpdate();
+            PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
+            prepararConsulta.setString(1, usuarioRegistro.getNombreUsuario());
+            prepararConsulta.setString(2, encriptador.getSHA512(usuarioRegistro.getContrasenia()));
+            prepararConsulta.setInt(3, usuarioRegistro.getRol().getIdRol());
+            int filasAfectadas = prepararConsulta.executeUpdate();
             verificacionRegistro = (filasAfectadas == 1) ? Constantes.CODIGO_OPERACION_CORRECTA : Constantes.CODIGO_OPERACION_DML_FALLIDA;;
         }finally{
             dataBase.desconectar();
