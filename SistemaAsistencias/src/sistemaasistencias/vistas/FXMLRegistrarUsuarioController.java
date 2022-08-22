@@ -207,7 +207,6 @@ public class FXMLRegistrarUsuarioController implements Initializable {
             Utilidades.mostrarAlerta("Usuario Registrado","Bienvenido al sistema.",Alert.AlertType.INFORMATION);
             irPantallaMenu();
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
             Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
         
