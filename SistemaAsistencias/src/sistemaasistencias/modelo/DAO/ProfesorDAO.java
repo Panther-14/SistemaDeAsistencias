@@ -4,13 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import passwordencryptor.SHA_512;
 import sistemaasistencias.modelo.DataBaseConnection;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.modelo.POJO.Profesor;
-import sistemaasistencias.modelo.POJO.Rol;
-import sistemaasistencias.modelo.POJO.Usuario;
-import static sistemaasistencias.modelo.POJO.Usuario.usuarioLogin;
 import sistemaasistencias.util.Constantes;
 
 /**

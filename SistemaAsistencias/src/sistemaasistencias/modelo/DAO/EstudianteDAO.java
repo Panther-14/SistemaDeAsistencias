@@ -45,6 +45,7 @@ public class EstudianteDAO {
                         "WHERE experienciaeducativa.nrc = ?;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
+            prepararConsulta.setString(1, experienciaEducativa.getNrc());
             ResultSet resultadoConsulta = prepararConsulta.executeQuery();
             while(resultadoConsulta.next()){
                 Estudiante estudianteTemp = new Estudiante();

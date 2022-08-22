@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -89,7 +87,7 @@ public class FXMLInicioSesionController implements Initializable {
                     break;
             }
         } catch (SQLException sqlException) {
-            Logger.getLogger(FXMLInicioSesionController.class.getName()).log(Level.SEVERE, null, sqlException);
+            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
 

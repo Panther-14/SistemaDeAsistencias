@@ -9,8 +9,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -61,10 +59,10 @@ public class FXMLDetallesClasesController implements Initializable {
     }    
     
     private void configurarColumnasTabla() {
-        colNombre.setCellValueFactory (new PropertyValueFactory (""));
-        colApellidoPaterno.setCellValueFactory (new PropertyValueFactory (""));
-        colApellidoMaterno.setCellValueFactory (new PropertyValueFactory (""));
-        colMatricula.setCellValueFactory (new PropertyValueFactory (""));
+        colNombre.setCellValueFactory (new PropertyValueFactory ("nombre"));
+        colApellidoPaterno.setCellValueFactory (new PropertyValueFactory ("apellidoPaterno"));
+        colApellidoMaterno.setCellValueFactory (new PropertyValueFactory ("apellidoMaterno"));
+        colMatricula.setCellValueFactory (new PropertyValueFactory ("matricula"));
         infoEstudiantes = FXCollections.observableArrayList();
     }
     
@@ -79,7 +77,7 @@ public class FXMLDetallesClasesController implements Initializable {
                 Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLRegistroClasesController.class.getName()).log(Level.SEVERE, null, ex);
+            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     private void cargarInformacion(){
@@ -88,7 +86,7 @@ public class FXMLDetallesClasesController implements Initializable {
             txtProfesor.setText(profesor.getNombreCompleto());
             txtProfesor.setEditable(false);
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLDetallesClasesController.class.getName()).log(Level.SEVERE, null, ex);
+            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     private void configurarVentana(ExperienciaEducativa experienciaEducativa){

@@ -4,8 +4,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -81,7 +79,7 @@ public class FXMLRegistroClasesController implements Initializable {
                 Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLRegistroClasesController.class.getName()).log(Level.SEVERE, null, ex);
+            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     private void configurarColumnasTabla() {
