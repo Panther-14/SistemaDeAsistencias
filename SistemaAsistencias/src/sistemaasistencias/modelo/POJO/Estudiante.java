@@ -1,5 +1,7 @@
 package sistemaasistencias.modelo.POJO;
 
+import java.util.Objects;
+
 /**
  *
  * @author Panther
@@ -58,5 +60,41 @@ public class Estudiante {
     public String toString() {
         return "Estudiante{" + "matricula=" + matricula + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidodoMaterno=" + apellidodoMaterno + ", usuario=" + usuario + '}';
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Estudiante other = (Estudiante) obj;
+        if (!Objects.equals(this.matricula, other.matricula)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellidoPaterno, other.apellidoPaterno)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellidodoMaterno, other.apellidodoMaterno)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuario, other.usuario)) {
+            return false;
+        }
+        return true;
+    }
+        
 }

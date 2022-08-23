@@ -45,11 +45,21 @@ public class RolDAOTest {
     @Test
     public void testObtenerRoles() throws Exception {
         System.out.println("obtenerRoles");
-        ArrayList<Rol> expResult = null;
+        ArrayList<Rol> expResult = new ArrayList<>();
+        Rol rol = new Rol();
+        Rol rol1 = new Rol();
+        
+        rol.setIdRol(1);
+        rol.setDescripcion("Profesor");
+        
+        rol1.setIdRol(2);
+        rol1.setDescripcion("Estudiante");
+        
+        expResult.add(rol);
+        expResult.add(rol1);
+        
         ArrayList<Rol> result = RolDAO.obtenerRoles();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

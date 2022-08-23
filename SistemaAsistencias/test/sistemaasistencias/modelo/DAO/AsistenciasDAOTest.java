@@ -45,12 +45,16 @@ public class AsistenciasDAOTest {
     @Test
     public void testObtenerHorarios() throws Exception {
         System.out.println("obtenerHorarios");
-        String nrc = "";
-        ArrayList<Asistencia> expResult = null;
+        String nrc = "12355";
+        Asistencia asistencia = new Asistencia();
+        asistencia.setNrc(nrc);
+        asistencia.setEstudiante("Doyle"+" "+"Gerlts"+" "+"Healey");
+        asistencia.setFecha("2022-08-22");
+        ArrayList<Asistencia> expResult = new ArrayList<>();
+        expResult.add(asistencia);
         ArrayList<Asistencia> result = AsistenciasDAO.obtenerHorarios(nrc);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }

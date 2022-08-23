@@ -1,5 +1,7 @@
 package sistemaasistencias.modelo.POJO;
 
+import java.util.Objects;
+
 /**
  *
  * @author Panther
@@ -18,6 +20,18 @@ public class ExperienciaEducativa {
     private String domingo;
 
     public ExperienciaEducativa() {
+    }
+
+    public ExperienciaEducativa(String nrc, String nombreEE, String lunes, String martes, String miercoles, String jueves, String viernes, String sabado, String domingo) {
+        this.nrc = nrc;
+        this.nombreEE = nombreEE;
+        this.lunes = lunes;
+        this.martes = martes;
+        this.miercoles = miercoles;
+        this.jueves = jueves;
+        this.viernes = viernes;
+        this.sabado = sabado;
+        this.domingo = domingo;
     }
 
     public String getNrc() {
@@ -107,5 +121,64 @@ public class ExperienciaEducativa {
     public void setDomingo(String domingo) {
         this.domingo = domingo;
     }
-      
+
+    @Override
+    public String toString() {
+        return "ExperienciaEducativa{" + "nrc=" + nrc + ", nombreEE=" + nombreEE + ", carera=" + carera + ", idHorario=" + idHorario + ", lunes=" + lunes + ", martes=" + martes + ", miercoles=" + miercoles + ", jueves=" + jueves + ", viernes=" + viernes + ", sabado=" + sabado + ", domingo=" + domingo + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ExperienciaEducativa other = (ExperienciaEducativa) obj;
+        if (this.idHorario != other.idHorario) {
+            return false;
+        }
+        if (!Objects.equals(this.nrc, other.nrc)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreEE, other.nombreEE)) {
+            return false;
+        }
+        if (!Objects.equals(this.lunes, other.lunes)) {
+            return false;
+        }
+        if (!Objects.equals(this.martes, other.martes)) {
+            return false;
+        }
+        if (!Objects.equals(this.miercoles, other.miercoles)) {
+            return false;
+        }
+        if (!Objects.equals(this.jueves, other.jueves)) {
+            return false;
+        }
+        if (!Objects.equals(this.viernes, other.viernes)) {
+            return false;
+        }
+        if (!Objects.equals(this.sabado, other.sabado)) {
+            return false;
+        }
+        if (!Objects.equals(this.domingo, other.domingo)) {
+            return false;
+        }
+        if (!Objects.equals(this.carera, other.carera)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

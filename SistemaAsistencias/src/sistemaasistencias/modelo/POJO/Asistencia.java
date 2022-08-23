@@ -1,5 +1,6 @@
 package sistemaasistencias.modelo.POJO;
 
+import java.util.Objects;
 import javafx.scene.control.CheckBox;
 
 /**
@@ -12,10 +13,8 @@ public class Asistencia {
     private String nrc;
     private String nombreEE;
     private String nombreEstudiante;
-    private CheckBox chAsistencia;
 
     public Asistencia() {
-        this.chAsistencia = new CheckBox();
     }
 
     public int getIdAsistencia() {
@@ -58,12 +57,45 @@ public class Asistencia {
         this.nombreEstudiante = estudiante;
     }
 
-    public CheckBox getChAsistencia() {
-        return chAsistencia;
+    @Override
+    public String toString() {
+        return "Asistencia{" + "idAsistencia=" + idAsistencia + ", fecha=" + fecha + ", nrc=" + nrc + ", nombreEE=" + nombreEE + ", nombreEstudiante=" + nombreEstudiante + '}';
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
     }
 
-    public void setChAsistencia(CheckBox chAsistencia) {
-        this.chAsistencia = chAsistencia;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Asistencia other = (Asistencia) obj;
+        if (this.idAsistencia != other.idAsistencia) {
+            return false;
+        }
+        if (!Objects.equals(this.fecha, other.fecha)) {
+            return false;
+        }
+        if (!Objects.equals(this.nrc, other.nrc)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreEE, other.nombreEE)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreEstudiante, other.nombreEstudiante)) {
+            return false;
+        }
+        return true;
     }
     
 }
