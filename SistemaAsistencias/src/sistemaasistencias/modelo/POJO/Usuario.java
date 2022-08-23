@@ -1,5 +1,7 @@
 package sistemaasistencias.modelo.POJO;
 
+import java.util.Objects;
+
 /**
  *
  * @author Usuario
@@ -51,6 +53,39 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" + "nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", codigoRespuesta=" + codigoRespuesta + ", rol=" + rol + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.nombreUsuario, other.nombreUsuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.contrasenia, other.contrasenia)) {
+            return false;
+        }
+        if (!Objects.equals(this.codigoRespuesta, other.codigoRespuesta)) {
+            return false;
+        }
+        if (!Objects.equals(this.rol, other.rol)) {
+            return false;
+        }
+        return true;
     }
     
 }

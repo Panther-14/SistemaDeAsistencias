@@ -39,7 +39,7 @@ public class DataBaseConnection {
             Path CURRENT_FILE = Paths.get("");
             String directory = CURRENT_FILE.toAbsolutePath().toString();
             directory = Paths.get(directory, "src", "sistemaasistencias", "modelo", "dbconfig.txt").toString();
-            System.err.println("File directory is " + directory); // err for debbug
+            //System.err.println("File directory is " + directory); // err for debbug
             URL url = new File(directory).toURI().toURL();
             FileInputStream archivoConfiguracion = new FileInputStream(new File(url.getPath()));
             Properties atributos = new Properties();

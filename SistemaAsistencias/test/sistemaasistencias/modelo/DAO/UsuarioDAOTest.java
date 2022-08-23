@@ -11,7 +11,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sistemaasistencias.modelo.POJO.Rol;
 import sistemaasistencias.modelo.POJO.Usuario;
+import sistemaasistencias.util.Constantes;
 
 /**
  *
@@ -44,13 +46,20 @@ public class UsuarioDAOTest {
     @Test
     public void testIniciarSesion() throws Exception {
         System.out.println("iniciarSesion");
-        String nombreUsuario = "";
-        String contrasenia = "";
-        Usuario expResult = null;
+        String nombreUsuario = "wcartmill3";
+        String contrasenia = "123";
+        
+        Usuario expResult = new Usuario();
+        expResult.setNombreUsuario(nombreUsuario);
+        expResult.setContrasenia(null);
+        expResult.setCodigoRespuesta(Constantes.CODIGO_OPERACION_CORRECTA);
+        Rol rol = new Rol();
+        rol.setIdRol(2);
+        rol.setDescripcion("Estudiante");
+        expResult.setRol(rol);
+        
         Usuario result = UsuarioDAO.iniciarSesion(nombreUsuario, contrasenia);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -59,12 +68,17 @@ public class UsuarioDAOTest {
     @Test
     public void testRegistrarUsuario() throws Exception {
         System.out.println("registrarUsuario");
-        Usuario usuarioRegistro = null;
-        int expResult = 0;
+        Usuario usuarioRegistro = new Usuario();
+        usuarioRegistro.setCodigoRespuesta(Constantes.CODIGO_OPERACION_CORRECTA);
+        usuarioRegistro.setNombreUsuario("Panther");
+        usuarioRegistro.setContrasenia("123");
+        Rol rol = new Rol();
+        rol.setIdRol(2);
+        rol.setDescripcion("Estudiante");
+        usuarioRegistro.setRol(rol);
+        int expResult = Constantes.CODIGO_OPERACION_CORRECTA;
         int result = UsuarioDAO.registrarUsuario(usuarioRegistro);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
