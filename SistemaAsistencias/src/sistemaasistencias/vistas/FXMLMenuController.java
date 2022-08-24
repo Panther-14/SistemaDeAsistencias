@@ -32,9 +32,9 @@ public class FXMLMenuController implements Initializable {
         // TODO
     }    
 
-    private void irPantallaRegistroClases(String titulo,String ventana,int modo) {
+    private void irPantallaRegistroClases(String titulo,int modo) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(ventana));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegistroClases.fxml"));
             Parent root = loader.load();
             FXMLRegistroClasesController controladorDetalles = loader.getController();
             controladorDetalles.configurarVentana(modo);
@@ -51,12 +51,17 @@ public class FXMLMenuController implements Initializable {
     
     @FXML
     private void detallesExperienciasEducativas(ActionEvent event) {
-        irPantallaRegistroClases("Detalles Experiencia Educativa", "FXMLRegistroClases.fxml",1);
+        irPantallaRegistroClases("Detalles Experiencia Educativa",1);
     }
 
     @FXML
     private void inscribirExperienciaEducativa(ActionEvent event) {
-        irPantallaRegistroClases("Inscribir Experiencia Educativa", "FXMLRegistroClases.fxml",2);
+        irPantallaRegistroClases("Inscribir Experiencia Educativa",2);
+    }
+
+    @FXML
+    private void registroDeAsistencia(ActionEvent event) {
+        irPantallaRegistroClases("Asistencias por Experiencia Educativa",3);
     }
     
 }

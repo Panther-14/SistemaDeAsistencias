@@ -14,9 +14,9 @@ import sistemaasistencias.modelo.POJO.Asistencia;
  *
  * @author Panther
  */
-public class AsistenciasDAOTest {
+public class AsistenciaDAOTest {
     
-    public AsistenciasDAOTest() {
+    public AsistenciaDAOTest() {
     }
     
     @BeforeClass
@@ -36,21 +36,20 @@ public class AsistenciasDAOTest {
     }
 
     /**
-     * Test of obtenerHorarios method, of class AsistenciasDAO.
+     * Test of obtenerAsistentes method, of class AsistenciaDAO.
      */
     @Test
-    public void testObtenerHorarios() throws SQLException {
+    public void testObtenerAsistentes() throws SQLException {
         System.out.println("obtenerHorarios");
         String nrc = "12355";
         Asistencia asistencia = new Asistencia();
         asistencia.setNrc(nrc);
-        asistencia.setEstudiante("Doyle"+" "+"Gerlts"+" "+"Healey");
+        asistencia.setNombreEstudiante("Doyle"+" "+"Gerlts"+" "+"Healey");
         asistencia.setFecha("2022-08-22");
         ArrayList<Asistencia> expResult = new ArrayList<>();
         expResult.add(asistencia);
-        ArrayList<Asistencia> result = AsistenciasDAO.obtenerHorarios(nrc);
+        ArrayList<Asistencia> result = AsistenciaDAO.obtenerAsistentes(nrc);
         assertEquals(expResult, result);
-        //fail("The test case is a prototype.");
     }
     
 }

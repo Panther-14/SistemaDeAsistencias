@@ -51,16 +51,6 @@ public class FXMLInscribirAEEController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }    
-
-    @FXML
-    private void registrarEnExperienciaEducativa(ActionEvent event) {
-    }
-
-    @FXML
-    private void cancelarRegistro(ActionEvent event) {
-        Stage escenario = (Stage) txtApellidoMaterno.getScene().getWindow();
-        escenario.close();
-    }
     
     public void configurarVentana(ExperienciaEducativa experienciaEducativa){
         this.experienciaEducativa = experienciaEducativa;
@@ -98,4 +88,25 @@ public class FXMLInscribirAEEController implements Initializable {
             txtIdentificador.setText(estudiante.getMatricula());
         }
     }
+    
+    private void validarHorario(){
+        String lunes = this.experienciaEducativa.getLunes();
+        String martes = this.experienciaEducativa.getMartes();
+        String miercoles = this.experienciaEducativa.getMiercoles();
+        String jueves = this.experienciaEducativa.getJueves();
+        String viernes = this.experienciaEducativa.getViernes();
+        String sabado = this.experienciaEducativa.getSabado();
+        String domingo = this.experienciaEducativa.getDomingo();
+    }
+    @FXML
+    private void registrarEnExperienciaEducativa(ActionEvent event) {
+        validarHorario();
+    }
+
+    @FXML
+    private void cancelarRegistro(ActionEvent event) {
+        Stage escenario = (Stage) txtApellidoMaterno.getScene().getWindow();
+        escenario.close();
+    }
+    
 }

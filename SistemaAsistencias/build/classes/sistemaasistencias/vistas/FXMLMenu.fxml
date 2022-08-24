@@ -16,5 +16,6 @@
       </Label>
       <Button layoutX="268.0" layoutY="115.0" mnemonicParsing="false" onAction="#detallesExperienciasEducativas" text="Detalles Experiencias Educativas" />
       <Button layoutX="268.0" layoutY="168.0" mnemonicParsing="false" onAction="#inscribirExperienciaEducativa" text="Inscribir a Experiencia Educativa" />
+      <Button layoutX="294.0" layoutY="215.0" mnemonicParsing="false" onAction="#registroDeAsistencia" text="Registro de Asistencia" />
    </children>
 </AnchorPane>

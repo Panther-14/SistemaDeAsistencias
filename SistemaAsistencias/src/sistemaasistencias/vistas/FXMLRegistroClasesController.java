@@ -37,7 +37,7 @@ import sistemaasistencias.util.Utilidades;
 public class FXMLRegistroClasesController implements Initializable {
     
     private ObservableList<ExperienciaEducativa> infoExperienciaEducativas;
-    private int modoInscribir;
+    private int modoDeFuncion;
 
     @FXML
     private TableView<ExperienciaEducativa> tbExperiencias;
@@ -136,9 +136,9 @@ public class FXMLRegistroClasesController implements Initializable {
         }
     }
 
-    private void abrirVentanaDetallesExperienciaEducativa(ExperienciaEducativa experienciaEducativa, String titulo, String ventana){
+    private void abrirVentanaDetallesExperienciaEducativa(ExperienciaEducativa experienciaEducativa){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(ventana));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDetallesClases.fxml"));
             Parent root = loader.load();
             FXMLDetallesClasesController controladorDetalles = loader.getController();
             controladorDetalles.configurarVentana(experienciaEducativa);
@@ -146,7 +146,7 @@ public class FXMLRegistroClasesController implements Initializable {
             Stage escenarioPrincipal = new Stage();
             escenarioPrincipal.setResizable(false);
             escenarioPrincipal.setScene(escena);
-            escenarioPrincipal.setTitle(titulo);
+            escenarioPrincipal.setTitle("Detalles de la Experiencia Educativa");
             escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
             escenarioPrincipal.showAndWait();
         } catch (IOException iOException) {
@@ -154,9 +154,9 @@ public class FXMLRegistroClasesController implements Initializable {
         }
     }
     
-    private void abrirVentanaInscribirExperienciaEducativa(ExperienciaEducativa experienciaEducativa, String titulo, String ventana){
+    private void abrirVentanaInscribirExperienciaEducativa(ExperienciaEducativa experienciaEducativa){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(ventana));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLInscribirAEE.fxml"));
             Parent root = loader.load();
             FXMLInscribirAEEController controladorDetalles = loader.getController();
             controladorDetalles.configurarVentana(experienciaEducativa);
@@ -164,7 +164,25 @@ public class FXMLRegistroClasesController implements Initializable {
             Stage escenarioPrincipal = new Stage();
             escenarioPrincipal.setResizable(false);
             escenarioPrincipal.setScene(escena);
-            escenarioPrincipal.setTitle(titulo);
+            escenarioPrincipal.setTitle("Inscribir Experiencia Educativa");
+            escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
+            escenarioPrincipal.showAndWait();
+        } catch (IOException iOException) {
+            Utilidades.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
+        }
+    }
+    
+    private void abrirVentanaAsistenciasExperienciaEducativa(ExperienciaEducativa experienciaEducativa){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegistroAsistencias.fxml"));
+            Parent root = loader.load();
+            FXMLRegistroAsistenciasController controladorDetalles = loader.getController();
+            controladorDetalles.configurarVentana(experienciaEducativa);
+            Scene escena = new Scene(root);
+            Stage escenarioPrincipal = new Stage();
+            escenarioPrincipal.setResizable(false);
+            escenarioPrincipal.setScene(escena);
+            escenarioPrincipal.setTitle("Registro de Asistencias");
             escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
             escenarioPrincipal.showAndWait();
         } catch (IOException iOException) {
@@ -173,12 +191,15 @@ public class FXMLRegistroClasesController implements Initializable {
     }
     
     private void modoDeVentana(ExperienciaEducativa experienciaEducativa) {
-        switch(this.modoInscribir){
+        switch(this.modoDeFuncion){
             case 1:
-                abrirVentanaDetallesExperienciaEducativa(experienciaEducativa,"Detalles de la Experiencia Educativa", "FXMLDetallesClases.fxml");
+                abrirVentanaDetallesExperienciaEducativa(experienciaEducativa);
                 break;
             case 2:
-                abrirVentanaInscribirExperienciaEducativa(experienciaEducativa,"Inscribir Experiencia Educativa", "FXMLInscribirAEE.fxml");
+                abrirVentanaInscribirExperienciaEducativa(experienciaEducativa);
+                break;
+            case 3:
+                abrirVentanaAsistenciasExperienciaEducativa(experienciaEducativa);
                 break;
         }
     }
@@ -196,7 +217,7 @@ public class FXMLRegistroClasesController implements Initializable {
     }
     
     public void configurarVentana(int modoInscribir){
-        this.modoInscribir = modoInscribir;
+        this.modoDeFuncion = modoInscribir;
     }
             
     @FXML

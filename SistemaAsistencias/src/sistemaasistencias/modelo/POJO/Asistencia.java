@@ -1,7 +1,6 @@
 package sistemaasistencias.modelo.POJO;
 
 import java.util.Objects;
-import javafx.scene.control.CheckBox;
 
 /**
  *
@@ -49,11 +48,11 @@ public class Asistencia {
         this.nombreEE = nombreEE;
     }
 
-    public String getEstudiante() {
+    public String getNombreEstudiante() {
         return nombreEstudiante;
     }
 
-    public void setEstudiante(String estudiante) {
+    public void setNombreEstudiante(String estudiante) {
         this.nombreEstudiante = estudiante;
     }
 
