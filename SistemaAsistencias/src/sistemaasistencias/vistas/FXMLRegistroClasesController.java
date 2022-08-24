@@ -1,5 +1,6 @@
 package sistemaasistencias.vistas;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,12 +13,18 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import sistemaasistencias.modelo.DAO.ExperienciaEducativaDAO;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.util.Utilidades;
@@ -30,7 +37,8 @@ import sistemaasistencias.util.Utilidades;
 public class FXMLRegistroClasesController implements Initializable {
     
     private ObservableList<ExperienciaEducativa> infoExperienciaEducativas;
-    
+    private int modoInscribir;
+
     @FXML
     private TableView<ExperienciaEducativa> tbExperiencias;
     @FXML
@@ -63,10 +71,6 @@ public class FXMLRegistroClasesController implements Initializable {
         cargarExperienciasEducativas();
     }
     
-    @FXML
-    private void regresar(ActionEvent event) {
-    }
-
     private void cargarExperienciasEducativas() {
         try {
             ArrayList<ExperienciaEducativa> resultadoConsulta = ExperienciaEducativaDAO.obtenerHorarios();
@@ -82,6 +86,7 @@ public class FXMLRegistroClasesController implements Initializable {
             Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
+    
     private void configurarColumnasTabla() {
         colNombre.setCellValueFactory (new PropertyValueFactory ("nombreEE"));
         colNRC.setCellValueFactory (new PropertyValueFactory ("nrc"));
@@ -118,6 +123,91 @@ public class FXMLRegistroClasesController implements Initializable {
             SortedList<ExperienciaEducativa> ordenamientoAlumnos = new SortedList<>(listaFiltrada);
             ordenamientoAlumnos.comparatorProperty().bind(tbExperiencias.comparatorProperty());
             tbExperiencias.setItems(ordenamientoAlumnos);
+        }
+    }
+    
+    private void valorSeleccionadoTablaExperienciasEducativas(){
+        int filaSeleccionada = tbExperiencias.getSelectionModel().getSelectedIndex();
+        if(filaSeleccionada >= 0){
+            ExperienciaEducativa experienciaEducativa = infoExperienciaEducativas.get(filaSeleccionada);
+            modoDeVentana(experienciaEducativa);
+        }else{
+            Utilidades.mostrarAlerta("EE no seleccionada","Para continuar debes seleccionar una Experiencia Educativa de la tabla",Alert.AlertType.WARNING);
+        }
+    }
+
+    private void abrirVentanaDetallesExperienciaEducativa(ExperienciaEducativa experienciaEducativa, String titulo, String ventana){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(ventana));
+            Parent root = loader.load();
+            FXMLDetallesClasesController controladorDetalles = loader.getController();
+            controladorDetalles.configurarVentana(experienciaEducativa);
+            Scene escena = new Scene(root);
+            Stage escenarioPrincipal = new Stage();
+            escenarioPrincipal.setResizable(false);
+            escenarioPrincipal.setScene(escena);
+            escenarioPrincipal.setTitle(titulo);
+            escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
+            escenarioPrincipal.showAndWait();
+        } catch (IOException iOException) {
+            Utilidades.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
+        }
+    }
+    
+    private void abrirVentanaInscribirExperienciaEducativa(ExperienciaEducativa experienciaEducativa, String titulo, String ventana){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(ventana));
+            Parent root = loader.load();
+            FXMLInscribirAEEController controladorDetalles = loader.getController();
+            controladorDetalles.configurarVentana(experienciaEducativa);
+            Scene escena = new Scene(root);
+            Stage escenarioPrincipal = new Stage();
+            escenarioPrincipal.setResizable(false);
+            escenarioPrincipal.setScene(escena);
+            escenarioPrincipal.setTitle(titulo);
+            escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
+            escenarioPrincipal.showAndWait();
+        } catch (IOException iOException) {
+            Utilidades.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
+        }
+    }
+    
+    private void modoDeVentana(ExperienciaEducativa experienciaEducativa) {
+        switch(this.modoInscribir){
+            case 1:
+                abrirVentanaDetallesExperienciaEducativa(experienciaEducativa,"Detalles de la Experiencia Educativa", "FXMLDetallesClases.fxml");
+                break;
+            case 2:
+                abrirVentanaInscribirExperienciaEducativa(experienciaEducativa,"Inscribir Experiencia Educativa", "FXMLInscribirAEE.fxml");
+                break;
+        }
+    }
+    
+    private void irPantallaMenu() {
+        try{
+            Stage escenarioPrincipal = (Stage) tbExperiencias.getScene().getWindow();
+            Scene menu = new Scene(FXMLLoader.load(getClass().getResource("FXMLMenu.fxml")));
+            escenarioPrincipal.setScene(menu);
+            escenarioPrincipal.setTitle("Menu");
+            escenarioPrincipal.show();
+        } catch (IOException ioException) {
+            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
+        }
+    }
+    
+    public void configurarVentana(int modoInscribir){
+        this.modoInscribir = modoInscribir;
+    }
+            
+    @FXML
+    private void regresar(ActionEvent event) {
+        irPantallaMenu();
+    }
+
+    @FXML
+    private void detallesExperienciaEducativa(MouseEvent event) {
+        if(event.getClickCount() == 2){
+            valorSeleccionadoTablaExperienciasEducativas();
         }
     }
 }

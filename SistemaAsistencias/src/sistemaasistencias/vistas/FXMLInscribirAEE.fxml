@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="720.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="sistemaasistencias.vistas.FXMLInscribirAEEController">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaasistencias.vistas.FXMLInscribirAEEController">
    <children>
       <Label layoutX="268.0" layoutY="14.0" text="Inscribir Usuario">
          <font>
@@ -18,18 +17,18 @@
       <Label layoutX="65.0" layoutY="119.0" text="Nombre" />
       <Label layoutX="65.0" layoutY="170.0" text="Apellido Paterno" />
       <Label layoutX="65.0" layoutY="224.0" text="Apellido Materno" />
-      <Label layoutX="65.0" layoutY="273.0" text="Identificador" />
+      <Label fx:id="lbIdentificador" layoutX="65.0" layoutY="273.0" text="Identificador" />
       <Label layoutX="379.0" layoutY="170.0" text="Experiencia Educativa" />
       <Label layoutX="455.0" layoutY="224.0" text="NRC" />
-      <TextField layoutX="194.0" layoutY="115.0" />
-      <TextField layoutX="194.0" layoutY="166.0" />
-      <TextField layoutX="193.0" layoutY="220.0" />
-      <TextField layoutX="193.0" layoutY="269.0" />
-      <TextField layoutX="507.0" layoutY="166.0" />
-      <TextField layoutX="506.0" layoutY="215.0" />
-      <TextField layoutX="507.0" layoutY="115.0" />
       <Label layoutX="455.0" layoutY="119.0" text="Rol" />
-      <Button layoutX="645.0" layoutY="441.0" mnemonicParsing="false" text="Cancelar" />
-      <Button layoutX="565.0" layoutY="441.0" mnemonicParsing="false" text="Registrar" />
+      <TextField fx:id="txtNombre" layoutX="194.0" layoutY="115.0" />
+      <TextField fx:id="txtApellidoPaterno" layoutX="194.0" layoutY="166.0" />
+      <TextField fx:id="txtApellidoMaterno" layoutX="193.0" layoutY="220.0" />
+      <TextField fx:id="txtIdentificador" layoutX="193.0" layoutY="269.0" />
+      <TextField fx:id="txtExperienciaEducativa" layoutX="507.0" layoutY="166.0" />
+      <TextField fx:id="txtNrc" layoutX="506.0" layoutY="215.0" />
+      <TextField fx:id="txtRol" layoutX="507.0" layoutY="115.0" />
+      <Button layoutX="565.0" layoutY="441.0" mnemonicParsing="false" onAction="#registrarEnExperienciaEducativa" text="Registrar" />
+      <Button layoutX="645.0" layoutY="441.0" mnemonicParsing="false" onAction="#cancelarRegistro" text="Cancelar" />
    </children>
 </AnchorPane>

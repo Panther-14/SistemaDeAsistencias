@@ -10,7 +10,7 @@ public class Estudiante {
     private String matricula;
     private String nombre;
     private String apellidoPaterno;
-    private String apellidodoMaterno;
+    private String apellidoMaterno;
     private Usuario usuario;
 
     public Estudiante() {
@@ -40,12 +40,12 @@ public class Estudiante {
         this.apellidoPaterno = apellidoPaterno;
     }
 
-    public String getApellidodoMaterno() {
-        return apellidodoMaterno;
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
     }
 
-    public void setApellidodoMaterno(String apellidodoMaterno) {
-        this.apellidodoMaterno = apellidodoMaterno;
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
     }
 
     public Usuario getUsuario() {
@@ -58,7 +58,7 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante{" + "matricula=" + matricula + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidodoMaterno=" + apellidodoMaterno + ", usuario=" + usuario + '}';
+        return "Estudiante{" + "matricula=" + matricula + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", usuario=" + usuario + '}';
     }
 
     @Override
@@ -88,7 +88,7 @@ public class Estudiante {
         if (!Objects.equals(this.apellidoPaterno, other.apellidoPaterno)) {
             return false;
         }
-        if (!Objects.equals(this.apellidodoMaterno, other.apellidodoMaterno)) {
+        if (!Objects.equals(this.apellidoMaterno, other.apellidoMaterno)) {
             return false;
         }
         if (!Objects.equals(this.usuario, other.usuario)) {

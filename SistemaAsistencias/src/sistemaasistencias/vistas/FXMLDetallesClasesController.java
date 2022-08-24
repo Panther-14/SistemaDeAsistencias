@@ -53,9 +53,6 @@ public class FXMLDetallesClasesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        configurarColumnasTabla();
-        cargarInformacion();
-        cargarExperienciasEducativas();
     }    
     
     private void configurarColumnasTabla() {
@@ -80,16 +77,21 @@ public class FXMLDetallesClasesController implements Initializable {
             Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
-    private void cargarInformacion(){
+    private void cargarProfesor(){
         try {
-            Profesor profesor = ProfesorDAO.obtenerProfesor(experienciaEducativa);
-            txtProfesor.setText(profesor.getNombreCompleto());
+            Profesor profesor = ProfesorDAO.obtenerProfesorPorEE(this.experienciaEducativa);
+            if(profesor != null){
+                txtProfesor.setText(profesor.getNombreCompleto());
+            }
             txtProfesor.setEditable(false);
         } catch (SQLException ex) {
             Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
-    private void configurarVentana(ExperienciaEducativa experienciaEducativa){
+    public void configurarVentana(ExperienciaEducativa experienciaEducativa){
         this.experienciaEducativa = experienciaEducativa;
+        configurarColumnasTabla();
+        cargarProfesor();
+        cargarExperienciasEducativas();
     }
 }

@@ -32,7 +32,7 @@ public class ProfesorDAO {
         }
         return verificacionRegistro;
     }
-    public static Profesor obtenerProfesor(ExperienciaEducativa experienciaEducativa) throws SQLException{
+    public static Profesor obtenerProfesorPorEE(ExperienciaEducativa experienciaEducativa) throws SQLException{
         Profesor profesorEncontrado = new Profesor();
         DataBaseConnection dataBase = new DataBaseConnection();
         String consulta = "SELECT * FROM profesor\n" +
@@ -47,7 +47,33 @@ public class ProfesorDAO {
                 profesorEncontrado.setNombreCompleto(resultadoConsulta.getString("nombre")+" "
                         +resultadoConsulta.getString("apellidoPaterno")+" "
                         +resultadoConsulta.getString("apellidoMaterno"));
-            }else{ 
+            }else{
+                profesorEncontrado = null;
+            }
+        }finally{
+            dataBase.desconectar();
+        }
+        return profesorEncontrado;
+    }
+    public static Profesor obtenerProfesor(String nombreUsuario) throws SQLException{
+        Profesor profesorEncontrado = new Profesor();
+        DataBaseConnection dataBase = new DataBaseConnection();
+        String consulta = "SELECT * FROM profesor\n" +
+                        "WHERE nombreUsuario = ?;";
+        try (Connection conexion = dataBase.getConexion()) {
+            PreparedStatement prepararConsulta = conexion.prepareStatement(consulta); 
+            prepararConsulta.setString(1,nombreUsuario);
+            ResultSet resultadoConsulta = prepararConsulta.executeQuery();           
+            if(resultadoConsulta.next()){
+                profesorEncontrado.setNombre(resultadoConsulta.getString("nombre"));
+                profesorEncontrado.setApellidoPaterno(resultadoConsulta.getString("apellidoPaterno"));
+                profesorEncontrado.setApellidodoMaterno(resultadoConsulta.getString("apellidoMaterno"));
+                profesorEncontrado.setNumeroEmpleado(resultadoConsulta.getInt("numeroEmpleado"));
+                profesorEncontrado.setNombreCompleto(resultadoConsulta.getString("nombre")+" "
+                        +resultadoConsulta.getString("apellidoPaterno")+" "
+                        +resultadoConsulta.getString("apellidoMaterno"));
+            }else{
+                profesorEncontrado = null;
             }
         }finally{
             dataBase.desconectar();

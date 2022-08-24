@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistemaasistencias.modelo.DAO;
 
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,7 +40,7 @@ public class UsuarioDAOTest {
      * Test of iniciarSesion method, of class UsuarioDAO.
      */
     @Test
-    public void testIniciarSesion() throws Exception {
+    public void testIniciarSesion() throws SQLException {
         System.out.println("iniciarSesion");
         String nombreUsuario = "wcartmill3";
         String contrasenia = "123";
@@ -66,7 +62,7 @@ public class UsuarioDAOTest {
      * Test of registrarUsuario method, of class UsuarioDAO.
      */
     @Test
-    public void testRegistrarUsuario() throws Exception {
+    public void testRegistrarUsuario() throws SQLException {
         System.out.println("registrarUsuario");
         Usuario usuarioRegistro = new Usuario();
         usuarioRegistro.setCodigoRespuesta(Constantes.CODIGO_OPERACION_CORRECTA);

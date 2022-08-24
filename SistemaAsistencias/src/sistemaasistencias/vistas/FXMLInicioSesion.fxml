@@ -10,7 +10,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaasistencias.vistas.FXMLInicioSesionController">
    <children>
-      <Button layoutX="500.0" layoutY="330.0" mnemonicParsing="false" onAction="#iniciarSesion" text="Iniciar Sesion" />
       <ImageView fitHeight="480.0" fitWidth="360.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/imagen-lateral.jpg" />
@@ -33,6 +32,7 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
+      <Button layoutX="500.0" layoutY="330.0" mnemonicParsing="false" onAction="#iniciarSesion" text="Iniciar Sesion" />
       <Button layoutX="500.0" layoutY="400.0" mnemonicParsing="false" onAction="#registrarse" prefHeight="25.0" prefWidth="86.0" text="Registrarse" />
       <Label layoutX="539.0" layoutY="367.0" text="o">
          <font>

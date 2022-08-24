@@ -171,7 +171,7 @@ public class FXMLRegistrarUsuarioController implements Initializable {
                 estudiante.setUsuario(usuario);
                 estudiante.setNombre(nombre);
                 estudiante.setApellidoPaterno(apellidoPaterno);
-                estudiante.setApellidodoMaterno(apellidoMaterno);
+                estudiante.setApellidoMaterno(apellidoMaterno);
                 estudiante.setMatricula(matricula);
                 
                 realizarRegistro(usuario, null, estudiante);

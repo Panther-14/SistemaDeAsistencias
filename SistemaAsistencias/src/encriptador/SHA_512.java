@@ -1,4 +1,4 @@
-package passwordencryptor;
+package encriptador;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
