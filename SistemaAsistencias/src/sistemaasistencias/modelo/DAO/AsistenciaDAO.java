@@ -12,15 +12,15 @@ import sistemaasistencias.modelo.POJO.Asistencia;
  *
  * @author Panther
  */
-public class AsistenciasDAO {
-    public static ArrayList<Asistencia> obtenerHorarios(String nrc) throws SQLException{
+public class AsistenciaDAO {
+    public static ArrayList<Asistencia> obtenerAsistentes(String nrc) throws SQLException{
         ArrayList<Asistencia> listaEEHorarios = new ArrayList<>();
         DataBaseConnection dataBase = new DataBaseConnection();
         String consulta = "SELECT estudiante.nombre,estudiante.apellidoPaterno,estudiante.apellidoMaterno,fecha,asistencias.nrc " +
                 "FROM sistemaasistencias.asistencias " +
                 "INNER JOIN estudiante " +
                 "ON asistencias.matricula = estudiante.matricula " +
-                "WHERE nrc = ?;";
+                "WHERE nrc = ? AND asistencia = 1;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
             prepararConsulta.setString(1, nrc);
@@ -29,7 +29,7 @@ public class AsistenciasDAO {
                 Asistencia asistenciaTemp = new Asistencia();                
                 asistenciaTemp.setNrc(resultadoConsulta.getString("nrc"));
                 asistenciaTemp.setFecha(resultadoConsulta.getString("fecha"));
-                asistenciaTemp.setEstudiante(resultadoConsulta.getString("nombre")+
+                asistenciaTemp.setNombreEstudiante(resultadoConsulta.getString("nombre")+
                         " "+resultadoConsulta.getString("apellidoPaterno")+
                         " "+resultadoConsulta.getString("apellidoMaterno"));
                 listaEEHorarios.add(asistenciaTemp);
