@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistemaasistencias.modelo.DAO;
 
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,7 +41,7 @@ public class ProfesorDAOTest {
      * Test of registrarProfesor method, of class ProfesorDAO.
      */
     @Test
-    public void testRegistrarProfesor() throws Exception {
+    public void testRegistrarProfesor() throws SQLException {
         System.out.println("registrarProfesor");
         Profesor profesorRegistro = new Profesor();
         Usuario usuario = new Usuario();
@@ -61,17 +57,18 @@ public class ProfesorDAOTest {
     }
 
     /**
-     * Test of obtenerProfesor method, of class ProfesorDAO.
+     * Test of obtenerProfesorPorEE method, of class ProfesorDAO.
+     * @throws java.sql.SQLException
      */
     @Test
-    public void testObtenerProfesor() throws Exception {
+    public void testObtenerProfesorPorEE() throws SQLException {
         System.out.println("obtenerProfesor");
         ExperienciaEducativa experienciaEducativa = new ExperienciaEducativa();
         experienciaEducativa.setNrc("12355");
         
         Profesor expResult = new Profesor();
         expResult.setNombreCompleto("Annabela Burchfield Millsap");
-        Profesor result = ProfesorDAO.obtenerProfesor(experienciaEducativa);
+        Profesor result = ProfesorDAO.obtenerProfesorPorEE(experienciaEducativa);
         assertEquals(expResult, result);
     }
     

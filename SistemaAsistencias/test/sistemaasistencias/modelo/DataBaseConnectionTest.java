@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistemaasistencias.modelo;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,7 +38,7 @@ public class DataBaseConnectionTest {
      * Test of getConexion method, of class DataBaseConnection.
      */
     @Test
-    public void testGetConexion() throws Exception {
+    public void testGetConexion() throws SQLException {
         System.out.println("getConexion");
         DataBaseConnection instance = new DataBaseConnection();
         Connection expResult = null;
@@ -55,7 +51,7 @@ public class DataBaseConnectionTest {
      * Test of desconectar method, of class DataBaseConnection.
      */
     @Test
-    public void testDesconectar() throws Exception {
+    public void testDesconectar() throws SQLException {
         System.out.println("desconectar");
         DataBaseConnection instance = new DataBaseConnection();
         instance.desconectar();
@@ -65,7 +61,7 @@ public class DataBaseConnectionTest {
      * Test of conectar method, of class DataBaseConnection.
      */
     @Test
-    public void testConectar() throws Exception {
+    public void testConectar() throws SQLException {
         System.out.println("conectar");
         DataBaseConnection instance = new DataBaseConnection();
         instance.conectar();

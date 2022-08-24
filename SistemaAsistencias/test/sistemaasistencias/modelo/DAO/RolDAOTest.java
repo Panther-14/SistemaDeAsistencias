@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistemaasistencias.modelo.DAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +39,7 @@ public class RolDAOTest {
      * Test of obtenerRoles method, of class RolDAO.
      */
     @Test
-    public void testObtenerRoles() throws Exception {
+    public void testObtenerRoles() throws SQLException {
         System.out.println("obtenerRoles");
         ArrayList<Rol> expResult = new ArrayList<>();
         Rol rol = new Rol();

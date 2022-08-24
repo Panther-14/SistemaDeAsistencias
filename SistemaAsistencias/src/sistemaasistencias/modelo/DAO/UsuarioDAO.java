@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import passwordencryptor.SHA_512;
+import encriptador.SHA_512;
 import sistemaasistencias.modelo.DataBaseConnection;
 import sistemaasistencias.modelo.POJO.Rol;
 import sistemaasistencias.modelo.POJO.Usuario;

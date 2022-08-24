@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistemaasistencias.modelo.DAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,10 +40,9 @@ public class EstudianteDAOTest {
 
     /**
      * Test of registrarEstudiante method, of class EstudianteDAO.
-     * @throws java.lang.Exception
      */
     @Test
-    public void testRegistrarEstudiante() throws Exception {
+    public void testRegistrarEstudiante() throws SQLException {
         System.out.println("registrarEstudiante");
         Estudiante estudianteRegistro = new Estudiante();
         Usuario usuario = new Usuario();
@@ -55,7 +50,7 @@ public class EstudianteDAOTest {
         estudianteRegistro.setMatricula("s20015725");
         estudianteRegistro.setNombre("Kyle");
         estudianteRegistro.setApellidoPaterno("Perez");
-        estudianteRegistro.setApellidodoMaterno("Martinez");
+        estudianteRegistro.setApellidoMaterno("Martinez");
         estudianteRegistro.setUsuario(usuario);
         int expResult = Constantes.CODIGO_OPERACION_CORRECTA;
         int result = EstudianteDAO.registrarEstudiante(estudianteRegistro);
@@ -66,7 +61,7 @@ public class EstudianteDAOTest {
      * Test of obtenerEstudiantesPorEE method, of class EstudianteDAO.
      */
     @Test
-    public void testObtenerEstudiantesPorEE() throws Exception {
+    public void testObtenerEstudiantesPorEE() throws SQLException {
         System.out.println("obtenerEstudiantesPorEE");
         ExperienciaEducativa experienciaEducativa = new ExperienciaEducativa();
         experienciaEducativa.setNrc("81709");
@@ -76,12 +71,12 @@ public class EstudianteDAOTest {
         
         estudiante.setNombre("Ottilie");
         estudiante.setApellidoPaterno("Haldon");
-        estudiante.setApellidodoMaterno("Arnhold");
+        estudiante.setApellidoMaterno("Arnhold");
         estudiante.setMatricula("s39392865");
         
         estudiante1.setNombre("Inger");
         estudiante1.setApellidoPaterno("Chasier");
-        estudiante1.setApellidodoMaterno("Fuentes");
+        estudiante1.setApellidoMaterno("Fuentes");
         estudiante1.setMatricula("s52199398");
         
         ArrayList<Estudiante> expResult = new ArrayList<>();
