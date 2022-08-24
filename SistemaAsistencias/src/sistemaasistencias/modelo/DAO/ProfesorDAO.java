@@ -69,9 +69,6 @@ public class ProfesorDAO {
                 profesorEncontrado.setApellidoPaterno(resultadoConsulta.getString("apellidoPaterno"));
                 profesorEncontrado.setApellidodoMaterno(resultadoConsulta.getString("apellidoMaterno"));
                 profesorEncontrado.setNumeroEmpleado(resultadoConsulta.getInt("numeroEmpleado"));
-                profesorEncontrado.setNombreCompleto(resultadoConsulta.getString("nombre")+" "
-                        +resultadoConsulta.getString("apellidoPaterno")+" "
-                        +resultadoConsulta.getString("apellidoMaterno"));
             }else{
                 profesorEncontrado = null;
             }
