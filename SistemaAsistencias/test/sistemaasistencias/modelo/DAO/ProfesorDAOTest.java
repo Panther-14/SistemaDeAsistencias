@@ -71,5 +71,21 @@ public class ProfesorDAOTest {
         Profesor result = ProfesorDAO.obtenerProfesorPorEE(experienciaEducativa);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of obtenerProfesor method, of class ProfesorDAO.
+     */
+    @Test
+    public void testObtenerProfesor() throws Exception {
+        System.out.println("obtenerProfesor");
+        String nombreUsuario = "Paul";
+        Profesor expResult = new Profesor();
+        expResult.setNombre("Juan");
+        expResult.setApellidoPaterno("Perez");
+        expResult.setApellidodoMaterno("Marquez");
+        expResult.setNumeroEmpleado(0);
+        Profesor result = ProfesorDAO.obtenerProfesor(nombreUsuario);
+        assertEquals(expResult, result);
+    }
     
 }

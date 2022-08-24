@@ -85,5 +85,21 @@ public class EstudianteDAOTest {
         ArrayList<Estudiante> result = EstudianteDAO.obtenerEstudiantesPorEE(experienciaEducativa);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of obtenerEstudiante method, of class EstudianteDAO.
+     */
+    @Test
+    public void testObtenerEstudiante() throws SQLException {
+        System.out.println("obtenerEstudiante");
+        String nombreUsuario = "nchatwin1";
+        Estudiante expResult = new Estudiante();
+        expResult.setNombre("Nina");
+        expResult.setApellidoPaterno("Lapere");
+        expResult.setApellidoMaterno("Chatwin");
+        expResult.setMatricula("s59423109");
+        Estudiante result = EstudianteDAO.obtenerEstudiante(nombreUsuario);
+        assertEquals(expResult, result);
+    }
     
 }
