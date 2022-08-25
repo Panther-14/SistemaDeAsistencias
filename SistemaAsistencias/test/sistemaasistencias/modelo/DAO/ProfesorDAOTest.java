@@ -76,7 +76,7 @@ public class ProfesorDAOTest {
      * Test of obtenerProfesor method, of class ProfesorDAO.
      */
     @Test
-    public void testObtenerProfesor() throws Exception {
+    public void testObtenerProfesor() throws SQLException {
         System.out.println("obtenerProfesor");
         String nombreUsuario = "Paul";
         Profesor expResult = new Profesor();
