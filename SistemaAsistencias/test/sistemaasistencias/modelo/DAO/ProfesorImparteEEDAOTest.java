@@ -4,6 +4,7 @@
  */
 package sistemaasistencias.modelo.DAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +44,7 @@ public class ProfesorImparteEEDAOTest {
      * Test of obtenerExperienciaEducativaProfesor method, of class ProfesorImparteEEDAO.
      */
     @Test
-    public void testObtenerExperienciaEducativaProfesor() throws Exception {
+    public void testObtenerExperienciaEducativaProfesor() throws SQLException {
         System.out.println("obtenerExperienciaEducativaProfesor");
         int numeroEmpleado = 0;
         ArrayList<ExperienciaEducativa> expResult = new ArrayList<>();
@@ -55,7 +56,7 @@ public class ProfesorImparteEEDAOTest {
      * Test of registrarEnExperiencia method, of class ProfesorImparteEEDAO.
      */
     @Test
-    public void testRegistrarEnExperiencia() throws Exception {
+    public void testRegistrarEnExperiencia() throws SQLException {
         System.out.println("registrarEnExperiencia");
         String nrc = "12355";
         int numeroEmpleado = 0;

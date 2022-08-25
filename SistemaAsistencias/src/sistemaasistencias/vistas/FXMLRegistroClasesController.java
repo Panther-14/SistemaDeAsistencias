@@ -67,13 +67,11 @@ public class FXMLRegistroClasesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        configurarColumnasTabla();
-        cargarExperienciasEducativas();
     }
     
     private void cargarExperienciasEducativas() {
         try {
-            ArrayList<ExperienciaEducativa> resultadoConsulta = ExperienciaEducativaDAO.obtenerHorarios();
+            ArrayList<ExperienciaEducativa> resultadoConsulta = resultadoConsulta = ExperienciaEducativaDAO.obtenerHorarios();
             if (resultadoConsulta != null) {
                 infoExperienciaEducativas.clear();
                 infoExperienciaEducativas.addAll(resultadoConsulta);
@@ -218,6 +216,8 @@ public class FXMLRegistroClasesController implements Initializable {
     
     public void configurarVentana(int modoInscribir){
         this.modoDeFuncion = modoInscribir;
+        configurarColumnasTabla();
+        cargarExperienciasEducativas();
     }
             
     @FXML
