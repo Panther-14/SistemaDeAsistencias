@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="DESKTOP-G1ONP15" name="sistemaasistencias.modelo.DAO.EstudianteCursaEEDAOTest" skipped="0" tests="2" time="0.998" timestamp="2022-08-25T00:09:27">
+<testsuite errors="0" failures="0" hostname="DESKTOP-G1ONP15" name="sistemaasistencias.modelo.DAO.ProfesorImparteEEDAOTest" skipped="0" tests="2" time="1.004" timestamp="2022-08-25T01:29:45">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="MX" />
@@ -15,7 +15,7 @@
     <property name="javac.test.sourcepath" value="C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\empty" />
     <property name="maven.defaultProjectBuilder.disableGlobalModelCache" value="true" />
     <property name="libs.spring-webmvc4.0.src" value="" />
-    <property name="javac.includes" value="sistemaasistencias/modelo/DAO/EstudianteCursaEEDAOTest.java" />
+    <property name="javac.includes" value="sistemaasistencias/modelo/DAO/ProfesorImparteEEDAOTest.java" />
     <property name="ant.core.lib" value="C:\Program Files\NetBeans-12.3\netbeans\extide\ant\lib\ant.jar" />
     <property name="javadoc.windowtitle" value="" />
     <property name="libs.jsp-compilation.javadoc" value="" />
@@ -44,7 +44,7 @@
     <property name="org.xml.sax.driver" value="com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser" />
     <property name="libs.hamcrest.classpath" value="C:\Program Files\NetBeans-12.3\netbeans\platform\modules\ext\hamcrest-core-1.3.jar" />
     <property name="os.name" value="Windows 10" />
-    <property name="test.class" value="sistemaasistencias.modelo.DAO.EstudianteCursaEEDAOTest" />
+    <property name="test.class" value="sistemaasistencias.modelo.DAO.ProfesorImparteEEDAOTest" />
     <property name="jdk.gtk.version" value="2.2" />
     <property name="libs.javaee-endorsed-api-7.0.maven-pom" value="" />
     <property name="ap.proc.none.internal" value="" />
@@ -66,7 +66,7 @@
     <property name="libs.spring-webmvc5.0.javadoc" value="" />
     <property name="libs.spring-framework500.classpath" value="C:\Program Files\NetBeans-12.3\netbeans\platform\modules\org-apache-commons-logging.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\cglib-2.2.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-aop-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-aspects-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-beans-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-context-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-context-indexer-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-context-support-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-core-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-expression-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-instrument-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-jcl-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-jdbc-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-jms-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-messaging-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-orm-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-oxm-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-test-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-tx-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-web-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-webflux-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-webmvc-5.2.9.RELEASE.jar;C:\Program Files\NetBeans-12.3\netbeans\java\modules\ext\spring-5\spring-websocket-5.2.9.RELEASE.jar" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sistemaasistencias.modelo.DAO.EstudianteCursaEEDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\test\results\TEST-sistemaasistencias.modelo.DAO.EstudianteCursaEEDAOTest.xml crashfile=C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\junitvmwatcher7696836746975024265.properties propsfile=C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\junit4990683958947478721.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sistemaasistencias.modelo.DAO.ProfesorImparteEEDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\test\results\TEST-sistemaasistencias.modelo.DAO.ProfesorImparteEEDAOTest.xml crashfile=C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\junitvmwatcher3164048805310796275.properties propsfile=C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\junit701394004058675241.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="build.sysclasspath" value="ignore" />
     <property name="manifest.encoding" value="UTF-8" />
@@ -98,7 +98,7 @@
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_321\jre\lib\endorsed" />
     <property name="libs.groovy-all.src" value="" />
     <property name="libs.junit_5.src" value="C:\Program Files\NetBeans-12.3\netbeans\platform\docs\junit-jupiter-api-5.6.0-sources.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\docs\junit-jupiter-params-5.6.0-sources.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\docs\junit-jupiter-engine-5.6.0-sources.jar" />
-    <property name="test.includes" value="sistemaasistencias/modelo/DAO/EstudianteCursaEEDAOTest.java" />
+    <property name="test.includes" value="sistemaasistencias/modelo/DAO/ProfesorImparteEEDAOTest.java" />
     <property name="libs.jakartaee-api-8.0.classpath" value="C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\jakarta.jakartaee-api-8.0.0.jar" />
     <property name="netbeans.dynamic.classpath" value="C:\Program Files\NetBeans-12.3\netbeans\platform\core\asm-8.0.1.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\core\asm-commons-8.0.1.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\core\asm-tree-8.0.1.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\core\core-base.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\core\core.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\core\org-netbeans-libs-asm.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\core\org-openide-filesystems-compat8.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\core\org-openide-filesystems.jar;C:\Program Files\NetBeans-12.3\netbeans\nb\core\org-netbeans-upgrader.jar;C:\Program Files\NetBeans-12.3\netbeans\nb\core\locale\core_nb.jar" />
     <property name="jnlp.enabled" value="false" />
@@ -120,7 +120,7 @@
     <property name="javac.debug" value="true" />
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="\" />
-    <property name="javac.includesfile.binary" value="C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\null1880057772" />
+    <property name="javac.includesfile.binary" value="C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\null1271999670" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="javac.test.processorpath" value="C:\Program Files\Java\jdk1.8.0_321/jre/lib/javaws.jar:C:\Program Files\Java\jdk1.8.0_321/jre/lib/deploy.jar:C:\Program Files\Java\jdk1.8.0_321/jre/lib/plugin.jar:libs\mysql-connector-java-8.0.20.jar:libs\commons-lang3-3.12.0\commons-lang3-3.12.0.jar:C:\Program Files\NetBeans-12.3\netbeans\platform\modules\ext\hamcrest-core-1.3.jar:C:\Program Files\NetBeans-12.3\netbeans\platform\modules\ext\junit-4.13.1.jar:C:\Program Files\NetBeans-12.3\netbeans\platform\modules\ext\junit-jupiter-api-5.6.0.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\modules\ext\junit-jupiter-params-5.6.0.jar;C:\Program Files\NetBeans-12.3\netbeans\platform\modules\ext\junit-jupiter-engine-5.6.0.jar:build/classes" />
@@ -133,7 +133,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="libs.jaxb.javadoc" value="C:\Program Files\NetBeans-12.3\netbeans\ide\docs\jaxb-api-doc.jar" />
     <property name="libs.struts.classpath" value="C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\antlr-2.7.2.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\bsf-2.3.0.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\commons-beanutils-1.8.0.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\commons-chain-1.2.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\commons-digester-1.8.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\commons-fileupload-1.1.1.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\commons-io-1.1.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\commons-logging-1.0.4.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\commons-validator-1.3.1.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\jstl-1.0.2.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\oro-2.0.8.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\standard-1.0.6.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-core-1.3.10.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-el-1.3.10.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-extras-1.3.10.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-faces-1.3.10.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-mailreader-dao-1.3.10.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-scripting-1.3.10.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-taglib-1.3.10.jar;C:\Program Files\NetBeans-12.3\netbeans\enterprise\modules\ext\struts\struts-tiles-1.3.10.jar" />
-    <property name="javac.includes.binary" value="C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\test\classes\sistemaasistencias\modelo\DAO\EstudianteCursaEEDAOTest.class" />
+    <property name="javac.includes.binary" value="C:\Users\yo\Desktop\JP_Desktop\Universidad\SistemaDeAsistencias\SistemaAsistencias\build\test\classes\sistemaasistencias\modelo\DAO\ProfesorImparteEEDAOTest.class" />
     <property name="ant.home" value="C:\Program Files\NetBeans-12.3\netbeans\extide\ant" />
     <property name="libs.junit_4.src" value="C:\Program Files\NetBeans-12.3\netbeans\platform\docs\junit-4.13.1-sources.jar" />
     <property name="javafx.run.height" value="600" />
@@ -460,11 +460,9 @@
     <property name="javafx.deploy.installpermanently" value="false" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="C:\Program Files\NetBeans-12.3\netbeans\enterprise\docs\javaee-doc-api.jar" />
   </properties>
-  <testcase classname="sistemaasistencias.modelo.DAO.EstudianteCursaEEDAOTest" name="testObtenerExperienciaEducativaEstudiante" time="0.912" />
-  <testcase classname="sistemaasistencias.modelo.DAO.EstudianteCursaEEDAOTest" name="testRegistrarEnExperiencia" time="0.027" />
-  <system-out><![CDATA[obtenerExperienciaEducativaEstudiante
-Exp [ExperienciaEducativa{nrc=15093, nombreEE=Tsonga, carera=null, idHorario=0, lunes=14:00, martes=2:51, miercoles=10:46, jueves=6:03, viernes=1:22, sabado=11:50, domingo=2:23}]
-Res [ExperienciaEducativa{nrc=15093, nombreEE=Tsonga, carera=null, idHorario=0, lunes=14:00, martes=2:51, miercoles=10:46, jueves=6:03, viernes=1:22, sabado=11:50, domingo=2:23}]
+  <testcase classname="sistemaasistencias.modelo.DAO.ProfesorImparteEEDAOTest" name="testObtenerExperienciaEducativaProfesor" time="0.921" />
+  <testcase classname="sistemaasistencias.modelo.DAO.ProfesorImparteEEDAOTest" name="testRegistrarEnExperiencia" time="0.024" />
+  <system-out><![CDATA[obtenerExperienciaEducativaProfesor
 registrarEnExperiencia
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
