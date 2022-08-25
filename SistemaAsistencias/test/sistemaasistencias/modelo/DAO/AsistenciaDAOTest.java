@@ -40,7 +40,7 @@ public class AsistenciaDAOTest {
      */
     @Test
     public void testObtenerAsistentes() throws SQLException {
-        System.out.println("obtenerHorarios");
+        System.out.println("obtenerAsistentes");
         String nrc = "12355";
         Asistencia asistencia = new Asistencia();
         asistencia.setNrc(nrc);
