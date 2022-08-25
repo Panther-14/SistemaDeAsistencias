@@ -2,6 +2,7 @@ package sistemaasistencias.vistas;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +11,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sistemaasistencias.modelo.DAO.EstudianteCursaEEDAO;
 import sistemaasistencias.modelo.DAO.EstudianteDAO;
 import sistemaasistencias.modelo.DAO.ProfesorDAO;
+import sistemaasistencias.modelo.DAO.ProfesorImparteEEDAO;
 import sistemaasistencias.modelo.POJO.Estudiante;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.modelo.POJO.Profesor;
@@ -26,6 +29,8 @@ import sistemaasistencias.util.Utilidades;
 public class FXMLInscribirAEEController implements Initializable {
     
     private ExperienciaEducativa experienciaEducativa;
+    private Estudiante estudiante;
+    private Profesor profesor;
     
     @FXML
     private Label lbIdentificador;
@@ -64,9 +69,8 @@ public class FXMLInscribirAEEController implements Initializable {
         
         if(Usuario.usuarioLogin.getRol().getIdRol()==1){
             lbIdentificador.setText("Número Empleado");
-            Profesor profesor = null;
             try{
-                profesor = ProfesorDAO.obtenerProfesor(Usuario.usuarioLogin.getNombreUsuario());
+                this.profesor = ProfesorDAO.obtenerProfesor(Usuario.usuarioLogin.getNombreUsuario());
             }catch(SQLException sqle){
                 Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
@@ -76,9 +80,8 @@ public class FXMLInscribirAEEController implements Initializable {
             txtIdentificador.setText(Integer.toString(profesor.getNumeroEmpleado()));
         }else if (Usuario.usuarioLogin.getRol().getIdRol()==2){
             lbIdentificador.setText("Matricula");
-            Estudiante estudiante = null;
             try{
-                estudiante = EstudianteDAO.obtenerEstudiante(Usuario.usuarioLogin.getNombreUsuario());
+                this.estudiante = EstudianteDAO.obtenerEstudiante(Usuario.usuarioLogin.getNombreUsuario());
             }catch(SQLException sqle){
                 Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
@@ -89,7 +92,9 @@ public class FXMLInscribirAEEController implements Initializable {
         }
     }
     
-    private void validarHorario(){
+    private boolean validarHorario(){
+        boolean valido = true;
+        
         String lunes = this.experienciaEducativa.getLunes();
         String martes = this.experienciaEducativa.getMartes();
         String miercoles = this.experienciaEducativa.getMiercoles();
@@ -97,10 +102,52 @@ public class FXMLInscribirAEEController implements Initializable {
         String viernes = this.experienciaEducativa.getViernes();
         String sabado = this.experienciaEducativa.getSabado();
         String domingo = this.experienciaEducativa.getDomingo();
+        
+        ArrayList<ExperienciaEducativa> experienciaEducativas = new ArrayList<>();
+        try {
+            if(this.estudiante != null){
+                experienciaEducativas = EstudianteCursaEEDAO.obtenerExperienciaEducativaEstudiante(estudiante.getMatricula());
+            }else if(this.profesor != null){
+                experienciaEducativas = ProfesorImparteEEDAO.obtenerExperienciaEducativaProfesor(profesor.getNumeroEmpleado());
+            }
+        } catch (SQLException ex) {
+            Utilidades.mostrarAlerta("(A)Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            
+        }
+        for (int i = 0; i < experienciaEducativas.size(); i++) {
+            ExperienciaEducativa educativa = experienciaEducativas.get(i);
+            if(educativa.getLunes().equals(lunes) || educativa.getMartes().equals(martes)||
+                    educativa.getMiercoles().equals(miercoles)||educativa.getJueves().equals(jueves)||
+                    educativa.getViernes().equals(viernes)||educativa.getSabado().equals(sabado)||
+                    educativa.getDomingo().equals(domingo)){
+                valido = false;
+            }
+        }        
+        return valido;
     }
+    
+    private void registrarInformacion(){
+        try {
+            if(this.estudiante != null){
+                EstudianteCursaEEDAO.registrarEnExperiencia(this.experienciaEducativa.getNrc(), this.estudiante.getMatricula());
+            }else if (this.profesor != null) {
+                ProfesorImparteEEDAO.registrarEnExperiencia(this.experienciaEducativa.getNrc(), this.profesor.getNumeroEmpleado());
+            }
+        } catch (SQLException sqle) {
+            Utilidades.mostrarAlerta("(B)Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+        }
+    }
+    
     @FXML
     private void registrarEnExperienciaEducativa(ActionEvent event) {
-        validarHorario();
+        if(validarHorario()){
+            registrarInformacion();
+            Utilidades.mostrarAlerta("Registro Exitoso", "Se ha registrado correctamente", Alert.AlertType.INFORMATION);
+            Stage escenario = (Stage) txtApellidoMaterno.getScene().getWindow();
+            escenario.close();
+        }else{
+            System.err.println("No se puede inscribir");
+        }
     }
 
     @FXML
