@@ -71,7 +71,7 @@ public class FXMLRegistroClasesController implements Initializable {
     
     private void cargarExperienciasEducativas() {
         try {
-            ArrayList<ExperienciaEducativa> resultadoConsulta = resultadoConsulta = ExperienciaEducativaDAO.obtenerHorarios();
+            ArrayList<ExperienciaEducativa> resultadoConsulta = ExperienciaEducativaDAO.obtenerHorarios();
             if (resultadoConsulta != null) {
                 infoExperienciaEducativas.clear();
                 infoExperienciaEducativas.addAll(resultadoConsulta);
