@@ -18,7 +18,7 @@ import java.io.FileNotFoundException;
  *
  * @author Panther
  */
-public class DataBaseConnection {
+public class ConexionBaseDeDatos {
     private Connection conexion;   
     private String direccionBD;
     private String usuario;
@@ -41,7 +41,7 @@ public class DataBaseConnection {
         try{
             Path CURRENT_FILE = Paths.get("");
             String directory = CURRENT_FILE.toAbsolutePath().toString();
-            directory = Paths.get(directory, "src", "sistemaasistencias", "modelo", "dbconfig.txt").toString();
+            directory = Paths.get(directory, "src", "sistemaasistencias", "modelo", "BaseDeDatosConfig.txt").toString();
             URL url = new File(directory).toURI().toURL();
             FileInputStream archivoConfiguracion = new FileInputStream(new File(url.getPath()));
             Properties atributos = new Properties();
@@ -52,11 +52,11 @@ public class DataBaseConnection {
             this.usuario = atributos.getProperty("Usuario");
             this.contrasenia = atributos.getProperty("Contrasenia");
         }catch (FileNotFoundException fnfException) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, fnfException);
+            Logger.getLogger(ConexionBaseDeDatos.class.getName()).log(Level.SEVERE, null, fnfException);
         } catch (IOException ioException){
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ioException);
+            Logger.getLogger(ConexionBaseDeDatos.class.getName()).log(Level.SEVERE, null, ioException);
         } catch (ClassNotFoundException cnfException) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, cnfException);
+            Logger.getLogger(ConexionBaseDeDatos.class.getName()).log(Level.SEVERE, null, cnfException);
         }
     }
     

@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import sistemaasistencias.modelo.DataBaseConnection;
+import sistemaasistencias.modelo.ConexionBaseDeDatos;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.modelo.POJO.Profesor;
-import sistemaasistencias.util.Constantes;
+import sistemaasistencias.constantes.Constantes;
 
 /**
  *
@@ -15,7 +15,7 @@ import sistemaasistencias.util.Constantes;
  */
 public class ProfesorDAO {
     public static int registrarProfesor(Profesor profesorRegistro) throws SQLException{
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         int verificacionRegistro;
         String consulta = "INSERT INTO profesor values(?,?,?,?,?);";
         try(Connection conexion = dataBase.getConexion()){
@@ -23,7 +23,7 @@ public class ProfesorDAO {
             prepararConsulta.setInt(1, profesorRegistro.getNumeroEmpleado());
             prepararConsulta.setString(2, profesorRegistro.getNombre());
             prepararConsulta.setString(3, profesorRegistro.getApellidoPaterno());
-            prepararConsulta.setString(4, profesorRegistro.getApellidodoMaterno());
+            prepararConsulta.setString(4, profesorRegistro.getApellidoMaterno());
             prepararConsulta.setString(5, profesorRegistro.getUsuario().getNombreUsuario());
             int filasAfectadas = prepararConsulta.executeUpdate();
             verificacionRegistro = (filasAfectadas == 1) ? Constantes.CODIGO_OPERACION_CORRECTA : Constantes.CODIGO_OPERACION_DML_FALLIDA;;
@@ -34,10 +34,10 @@ public class ProfesorDAO {
     }
     public static Profesor obtenerProfesorPorEE(ExperienciaEducativa experienciaEducativa) throws SQLException{
         Profesor profesorEncontrado = new Profesor();
-        DataBaseConnection dataBase = new DataBaseConnection();
-        String consulta = "SELECT * FROM profesor\n" +
-                        "INNER JOIN profesorimparteee\n" +
-                        "ON profesor.numeroEmpleado = profesorimparteee.numeroEmpleado\n" +
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
+        String consulta = "SELECT * FROM profesor " +
+                        "INNER JOIN profesorimparteee " +
+                        "ON profesor.numeroEmpleado = profesorimparteee.numeroEmpleado " +
                         "WHERE nrc = ?;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta); 
@@ -57,8 +57,8 @@ public class ProfesorDAO {
     }
     public static Profesor obtenerProfesor(String nombreUsuario) throws SQLException{
         Profesor profesorEncontrado = new Profesor();
-        DataBaseConnection dataBase = new DataBaseConnection();
-        String consulta = "SELECT * FROM profesor\n" +
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
+        String consulta = "SELECT * FROM profesor " +
                         "WHERE nombreUsuario = ?;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta); 
@@ -67,7 +67,7 @@ public class ProfesorDAO {
             if(resultadoConsulta.next()){
                 profesorEncontrado.setNombre(resultadoConsulta.getString("nombre"));
                 profesorEncontrado.setApellidoPaterno(resultadoConsulta.getString("apellidoPaterno"));
-                profesorEncontrado.setApellidodoMaterno(resultadoConsulta.getString("apellidoMaterno"));
+                profesorEncontrado.setApellidoMaterno(resultadoConsulta.getString("apellidoMaterno"));
                 profesorEncontrado.setNumeroEmpleado(resultadoConsulta.getInt("numeroEmpleado"));
             }else{
                 profesorEncontrado = null;

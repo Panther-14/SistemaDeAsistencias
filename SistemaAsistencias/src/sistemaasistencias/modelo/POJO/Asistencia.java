@@ -68,33 +68,19 @@ public class Asistencia {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public boolean equals(Object object) {
+        boolean isEquals=false;
+        if (object == this) {
+            isEquals=true;
         }
-        if (obj == null) {
-            return false;
+        if (object!= null && object instanceof Asistencia) {
+            Asistencia other = (Asistencia) object;
+            isEquals=this.getIdAsistencia()== other.getIdAsistencia()&&
+                    this.getFecha().equals(other.getFecha()) &&
+                    this.getNombreEE().equals(other.getNombreEE()) &&
+                    this.getNrc().equals(other.getNrc()) &&
+                    this.getNombreEstudiante().equals(other.getNombreEstudiante());
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Asistencia other = (Asistencia) obj;
-        if (this.idAsistencia != other.idAsistencia) {
-            return false;
-        }
-        if (!Objects.equals(this.fecha, other.fecha)) {
-            return false;
-        }
-        if (!Objects.equals(this.nrc, other.nrc)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombreEE, other.nombreEE)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombreEstudiante, other.nombreEstudiante)) {
-            return false;
-        }
-        return true;
+        return isEquals;
     }
-    
 }

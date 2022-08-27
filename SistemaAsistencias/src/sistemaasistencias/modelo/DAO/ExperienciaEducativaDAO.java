@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import sistemaasistencias.modelo.DataBaseConnection;
+import sistemaasistencias.modelo.ConexionBaseDeDatos;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 
 /**
@@ -15,10 +15,11 @@ import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 public class ExperienciaEducativaDAO {
     public static ArrayList<ExperienciaEducativa> obtenerHorarios() throws SQLException{
         ArrayList<ExperienciaEducativa> listaEEHorarios = new ArrayList<>();
-        DataBaseConnection dataBase = new DataBaseConnection();
-        String consulta = "SELECT * FROM experienciaeducativa WHERE activa = 1;";
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
+        String consulta = "SELECT * FROM experienciaeducativa WHERE activa = ?;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
+            prepararConsulta.setInt(1, 1);
             ResultSet resultadoConsulta = prepararConsulta.executeQuery();
             while(resultadoConsulta.next()){
                 ExperienciaEducativa experienciaEducativaTemp = new ExperienciaEducativa();

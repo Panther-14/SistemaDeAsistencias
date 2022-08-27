@@ -1,4 +1,4 @@
-package sistemaasistencias.util;
+package sistemaasistencias.alertas;
 
 import java.util.Optional;
 import javafx.scene.control.Alert;
@@ -8,7 +8,7 @@ import javafx.scene.control.ButtonType;
  *
  * @author Usuario
  */
-public class Utilidades {
+public class Alertas {
     public static void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipoAlerta){
         Alert alerta = new Alert(tipoAlerta);
         alerta.setTitle(titulo);

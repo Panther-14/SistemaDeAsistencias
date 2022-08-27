@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import sistemaasistencias.util.Utilidades;
+import sistemaasistencias.alertas.Alertas;
 
 /**
  * FXML Controller class
@@ -45,7 +45,7 @@ public class FXMLMenuController implements Initializable {
             escenarioPrincipal.setTitle(titulo);
             escenarioPrincipal.show();
         } catch (IOException ioException) {
-            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
+            Alertas.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
         }
     }
     

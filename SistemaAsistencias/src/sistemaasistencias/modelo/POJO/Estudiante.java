@@ -1,7 +1,5 @@
 package sistemaasistencias.modelo.POJO;
 
-import java.util.Objects;
-
 /**
  *
  * @author Panther
@@ -68,33 +66,20 @@ public class Estudiante {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public boolean equals(Object object) {
+        boolean isEquals=false;
+        if (object == this) {
+            isEquals=true;
         }
-        if (obj == null) {
-            return false;
+        if (object!= null && object instanceof Estudiante) {
+            Estudiante other = (Estudiante) object;
+            isEquals=this.getNombre().equals(other.getNombre()) &&
+                    this.getApellidoPaterno().equals(other.getApellidoPaterno()) &&
+                    this.getApellidoMaterno().equals(other.getApellidoMaterno()) &&
+                    this.getMatricula().equals(other.getMatricula()) &&
+                    this.getUsuario().equals(other.getUsuario());
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Estudiante other = (Estudiante) obj;
-        if (!Objects.equals(this.matricula, other.matricula)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidoPaterno, other.apellidoPaterno)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidoMaterno, other.apellidoMaterno)) {
-            return false;
-        }
-        if (!Objects.equals(this.usuario, other.usuario)) {
-            return false;
-        }
-        return true;
+        return isEquals;
     }
         
 }

@@ -1,4 +1,4 @@
-package sistemaasistencias.util;
+package sistemaasistencias.constantes;
 
 /**
  *

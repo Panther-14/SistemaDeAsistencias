@@ -27,7 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sistemaasistencias.modelo.DAO.ExperienciaEducativaDAO;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
-import sistemaasistencias.util.Utilidades;
+import sistemaasistencias.alertas.Alertas;
 
 /**
  * FXML Controller class
@@ -78,10 +78,10 @@ public class FXMLRegistroClasesController implements Initializable {
                 tbExperiencias.setItems(infoExperienciaEducativas);
                 configurarBusqueda();
             }else{
-                Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+                Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
         } catch (SQLException ex) {
-            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     
@@ -130,7 +130,7 @@ public class FXMLRegistroClasesController implements Initializable {
             ExperienciaEducativa experienciaEducativa = infoExperienciaEducativas.get(filaSeleccionada);
             modoDeVentana(experienciaEducativa);
         }else{
-            Utilidades.mostrarAlerta("EE no seleccionada","Para continuar debes seleccionar una Experiencia Educativa de la tabla",Alert.AlertType.WARNING);
+            Alertas.mostrarAlerta("EE no seleccionada","Para continuar debes seleccionar una Experiencia Educativa de la tabla",Alert.AlertType.WARNING);
         }
     }
 
@@ -148,7 +148,7 @@ public class FXMLRegistroClasesController implements Initializable {
             escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
             escenarioPrincipal.showAndWait();
         } catch (IOException iOException) {
-            Utilidades.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
         }
     }
     
@@ -166,7 +166,7 @@ public class FXMLRegistroClasesController implements Initializable {
             escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
             escenarioPrincipal.showAndWait();
         } catch (IOException iOException) {
-            Utilidades.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
         }
     }
     
@@ -184,7 +184,7 @@ public class FXMLRegistroClasesController implements Initializable {
             escenarioPrincipal.initModality(Modality.APPLICATION_MODAL);
             escenarioPrincipal.showAndWait();
         } catch (IOException iOException) {
-            Utilidades.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de sistema","Hubo un error al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
         }
     }
     
@@ -210,7 +210,7 @@ public class FXMLRegistroClasesController implements Initializable {
             escenarioPrincipal.setTitle("Menu");
             escenarioPrincipal.show();
         } catch (IOException ioException) {
-            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
+            Alertas.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
         }
     }
     

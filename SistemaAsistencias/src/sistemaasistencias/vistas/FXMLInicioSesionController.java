@@ -17,8 +17,8 @@ import javafx.stage.Stage;
 import org.apache.commons.lang3.StringUtils;
 import sistemaasistencias.modelo.DAO.UsuarioDAO;
 import sistemaasistencias.modelo.POJO.Usuario;
-import sistemaasistencias.util.Constantes;
-import sistemaasistencias.util.Utilidades;
+import sistemaasistencias.constantes.Constantes;
+import sistemaasistencias.alertas.Alertas;
 
 /**
  *
@@ -74,20 +74,20 @@ public class FXMLInicioSesionController implements Initializable {
             Usuario usuarioLogin = UsuarioDAO.iniciarSesion(nombreUsuario, constrasenia);
             switch(usuarioLogin.getCodigoRespuesta()){
                 case Constantes.CODIGO_OPERACION_CORRECTA:
-                    Utilidades.mostrarAlerta("Usuario Verificado","Bienvenido al sistema.",Alert.AlertType.INFORMATION);
+                    Alertas.mostrarAlerta("Usuario Verificado","Bienvenido al sistema.",Alert.AlertType.INFORMATION);
                     irPantallaMenu();
                     break;
                 case Constantes.CODIGO_CREDENCIALES_INCORRECTAS:
-                    Utilidades.mostrarAlerta("Credenciales incorrectas","Usuario o contraseña incorrectas.",Alert.AlertType.WARNING);
+                    Alertas.mostrarAlerta("Credenciales incorrectas","Usuario o contraseña incorrectas.",Alert.AlertType.WARNING);
                     txtUsuario.setText("");
                     txtContrasenia.setText("");
                     break;
                 case Constantes.CODIGO_ERROR_CONEXIONBD:
-                    Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+                    Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
                     break;
             }
         } catch (SQLException sqlException) {
-            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
 
@@ -99,7 +99,7 @@ public class FXMLInicioSesionController implements Initializable {
             escenarioPrincipal.setTitle("Menu");
             escenarioPrincipal.show();
         } catch (IOException ioException) {
-            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
+            Alertas.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
         }
     }
     
@@ -111,7 +111,7 @@ public class FXMLInicioSesionController implements Initializable {
             escenarioPrincipal.setTitle("Registrar usuario");
             escenarioPrincipal.show();
         } catch (IOException ioException) {
-            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar la ventana de registro", Alert.AlertType.ERROR);
+            Alertas.mostrarAlertaConfirmacion("Error", "No se puede cargar la ventana de registro", Alert.AlertType.ERROR);
         }
     }
 }

@@ -20,7 +20,7 @@ import sistemaasistencias.modelo.DAO.ProfesorDAO;
 import sistemaasistencias.modelo.POJO.Estudiante;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.modelo.POJO.Profesor;
-import sistemaasistencias.util.Utilidades;
+import sistemaasistencias.alertas.Alertas;
 
 /**
  * FXML Controller class
@@ -68,10 +68,10 @@ public class FXMLDetallesClasesController implements Initializable {
                 infoEstudiantes.addAll(resultadoConsulta);
                 tbAlumnos.setItems(infoEstudiantes);
             }else{
-                Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+                Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
         } catch (SQLException ex) {
-            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     private void cargarProfesor(){
@@ -82,7 +82,7 @@ public class FXMLDetallesClasesController implements Initializable {
             }
             txtProfesor.setEditable(false);
         } catch (SQLException ex) {
-            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     public void configurarVentana(ExperienciaEducativa experienciaEducativa){

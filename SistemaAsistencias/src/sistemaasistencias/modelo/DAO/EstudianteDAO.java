@@ -5,10 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import sistemaasistencias.modelo.DataBaseConnection;
+import sistemaasistencias.modelo.ConexionBaseDeDatos;
 import sistemaasistencias.modelo.POJO.Estudiante;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
-import sistemaasistencias.util.Constantes;
+import sistemaasistencias.constantes.Constantes;
 
 /**
  *
@@ -16,7 +16,7 @@ import sistemaasistencias.util.Constantes;
  */
 public class EstudianteDAO {
     public static int registrarEstudiante(Estudiante estudianteRegistro) throws SQLException{
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         int verificacionRegistro;
         String consulta = "INSERT INTO estudiante values(?,?,?,?,?);";
         try(Connection conexion = dataBase.getConexion()){
@@ -35,12 +35,12 @@ public class EstudianteDAO {
     }
     public static ArrayList<Estudiante> obtenerEstudiantesPorEE(ExperienciaEducativa experienciaEducativa)throws SQLException{
         ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
-        DataBaseConnection dataBase = new DataBaseConnection();
-        String consulta = "SELECT estudiante.* FROM estudiante\n" +
-                        "INNER JOIN estudiantecursaee\n" +
-                        "ON estudiante.matricula = estudiantecursaee.matricula\n" +
-                        "INNER JOIN experienciaeducativa\n" +
-                        "ON experienciaeducativa.nrc = estudiantecursaee.nrc\n" +
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
+        String consulta = "SELECT estudiante.* FROM estudiante " +
+                        "INNER JOIN estudiantecursaee " +
+                        "ON estudiante.matricula = estudiantecursaee.matricula " +
+                        "INNER JOIN experienciaeducativa " +
+                        "ON experienciaeducativa.nrc = estudiantecursaee.nrc " +
                         "WHERE experienciaeducativa.nrc = ?;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
@@ -61,7 +61,7 @@ public class EstudianteDAO {
     }
     public static Estudiante obtenerEstudiante(String nombreUsuario)throws SQLException{
         Estudiante estudiante = new Estudiante();
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         String consulta = "SELECT * FROM estudiante " +
                         "WHERE nombreUsuario = ?;";
         try (Connection conexion = dataBase.getConexion()) {

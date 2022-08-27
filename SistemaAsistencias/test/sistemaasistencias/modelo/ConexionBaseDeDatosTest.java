@@ -13,9 +13,9 @@ import static org.junit.Assert.*;
  *
  * @author Panther
  */
-public class DataBaseConnectionTest {
+public class ConexionBaseDeDatosTest {
     
-    public DataBaseConnectionTest() {
+    public ConexionBaseDeDatosTest() {
     }
     
     @BeforeClass
@@ -35,12 +35,12 @@ public class DataBaseConnectionTest {
     }
 
     /**
-     * Test of getConexion method, of class DataBaseConnection.
+     * Test of getConexion method, of class ConexionBaseDeDatos.
      */
     @Test
     public void testGetConexion() throws SQLException {
         System.out.println("getConexion");
-        DataBaseConnection instance = new DataBaseConnection();
+        ConexionBaseDeDatos instance = new ConexionBaseDeDatos();
         Connection expResult = null;
         Connection result = instance.getConexion();
         expResult = result;
@@ -48,22 +48,22 @@ public class DataBaseConnectionTest {
     }
 
     /**
-     * Test of desconectar method, of class DataBaseConnection.
+     * Test of desconectar method, of class ConexionBaseDeDatos.
      */
     @Test
     public void testDesconectar() throws SQLException {
         System.out.println("desconectar");
-        DataBaseConnection instance = new DataBaseConnection();
+        ConexionBaseDeDatos instance = new ConexionBaseDeDatos();
         instance.desconectar();
     }
 
     /**
-     * Test of conectar method, of class DataBaseConnection.
+     * Test of conectar method, of class ConexionBaseDeDatos.
      */
     @Test
     public void testConectar() throws SQLException {
         System.out.println("conectar");
-        DataBaseConnection instance = new DataBaseConnection();
+        ConexionBaseDeDatos instance = new ConexionBaseDeDatos();
         instance.conectar();
     }
     

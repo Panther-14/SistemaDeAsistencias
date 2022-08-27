@@ -62,30 +62,19 @@ public class Usuario {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public boolean equals(Object object) {
+        boolean isEquals=false;
+        if (object == this) {
+            isEquals=true;
         }
-        if (obj == null) {
-            return false;
+        if (object!= null && object instanceof Usuario) {
+            Usuario other = (Usuario) object;
+            isEquals=this.getNombreUsuario().equals(other.getNombreUsuario()) &&
+                    this.getContrasenia().equals(other.getContrasenia()) &&
+                    this.getCodigoRespuesta().equals(other.getCodigoRespuesta()) &&
+                    this.getRol().equals(other.getRol());
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.nombreUsuario, other.nombreUsuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.contrasenia, other.contrasenia)) {
-            return false;
-        }
-        if (!Objects.equals(this.codigoRespuesta, other.codigoRespuesta)) {
-            return false;
-        }
-        if (!Objects.equals(this.rol, other.rol)) {
-            return false;
-        }
-        return true;
+        return isEquals;
     }
     
 }

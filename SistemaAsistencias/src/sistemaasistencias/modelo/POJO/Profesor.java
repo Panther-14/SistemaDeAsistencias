@@ -1,7 +1,5 @@
 package sistemaasistencias.modelo.POJO;
 
-import java.util.Objects;
-
 /**
  *
  * @author Panther
@@ -10,7 +8,7 @@ public class Profesor {
     private int numeroEmpleado;
     private String nombre;
     private String apellidoPaterno;
-    private String apellidodoMaterno;
+    private String apellidoMaterno;
     private String nombreCompleto;
     private Usuario usuario;
 
@@ -49,12 +47,12 @@ public class Profesor {
         this.apellidoPaterno = apellidoPaterno;
     }
 
-    public String getApellidodoMaterno() {
-        return apellidodoMaterno;
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
     }
 
-    public void setApellidodoMaterno(String apellidodoMaterno) {
-        this.apellidodoMaterno = apellidodoMaterno;
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
     }
 
     public Usuario getUsuario() {
@@ -67,7 +65,7 @@ public class Profesor {
 
     @Override
     public String toString() {
-        return "Profesor{" + "numeroEmpleado=" + numeroEmpleado + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidodoMaterno=" + apellidodoMaterno + ", usuario=" + usuario + '}';
+        return "Profesor{" + "numeroEmpleado=" + numeroEmpleado + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidodoMaterno=" + apellidoMaterno + ", usuario=" + usuario + '}';
     }
 
     @Override
@@ -77,36 +75,21 @@ public class Profesor {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public boolean equals(Object object) {
+        boolean isEquals=false;
+        if (object == this) {
+            isEquals=true;
         }
-        if (obj == null) {
-            return false;
+        if (object!= null && object instanceof Profesor) {
+            Profesor other = (Profesor) object;
+            isEquals=this.getNombre().equals(other.getNombre()) &&
+                    this.getApellidoPaterno().equals(other.getApellidoPaterno()) &&
+                    this.getApellidoMaterno().equals(other.getApellidoMaterno()) &&
+                    this.getNombreCompleto().equals(other.getNombreCompleto()) &&
+                    this.getNumeroEmpleado() == other.getNumeroEmpleado() &&
+                    this.getUsuario().equals(other.getUsuario());
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Profesor other = (Profesor) obj;
-        if (this.numeroEmpleado != other.numeroEmpleado) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidoPaterno, other.apellidoPaterno)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellidodoMaterno, other.apellidodoMaterno)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombreCompleto, other.nombreCompleto)) {
-            return false;
-        }
-        if (!Objects.equals(this.usuario, other.usuario)) {
-            return false;
-        }
-        return true;
+        return isEquals;
     }
     
 }

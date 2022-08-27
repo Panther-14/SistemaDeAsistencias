@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import sistemaasistencias.modelo.DataBaseConnection;
+import sistemaasistencias.modelo.ConexionBaseDeDatos;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
-import sistemaasistencias.util.Constantes;
+import sistemaasistencias.constantes.Constantes;
 
 /**
  *
@@ -16,14 +16,15 @@ import sistemaasistencias.util.Constantes;
 public class ProfesorImparteEEDAO {
     public static ArrayList<ExperienciaEducativa> obtenerExperienciaEducativaProfesor(int numeroEmpleado) throws SQLException{
         ArrayList<ExperienciaEducativa> listaEEEstudiante = new ArrayList<>();
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         String consulta = "SELECT experienciaeducativa.* FROM experienciaeducativa " +
                             "INNER JOIN profesorimparteee " +
                             "ON profesorimparteee.nrc = experienciaeducativa.nrc " +
-                            "WHERE activa = 1 AND numeroEmpleado = ?;";
+                            "WHERE activa = ? AND numeroEmpleado = ?;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);
-            prepararConsulta.setInt(1, numeroEmpleado);
+            prepararConsulta.setInt(1, 1);
+            prepararConsulta.setInt(2, numeroEmpleado);
             ResultSet resultadoConsulta = prepararConsulta.executeQuery();
             while(resultadoConsulta.next()){
                 ExperienciaEducativa experienciaEducativaTemp = new ExperienciaEducativa();
@@ -44,7 +45,7 @@ public class ProfesorImparteEEDAO {
         return listaEEEstudiante;
     }
     public static int registrarEnExperiencia(String nrc, int numeroEmpleado) throws SQLException{
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         int verificacionRegistro;
         String consulta = "INSERT INTO profesorimparteee (nrc,numeroEmpleado) values(?,?);";
         try(Connection conexion = dataBase.getConexion()){

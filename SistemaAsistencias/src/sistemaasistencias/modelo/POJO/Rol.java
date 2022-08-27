@@ -1,7 +1,5 @@
 package sistemaasistencias.modelo.POJO;
 
-import java.util.Objects;
-
 /**
  *
  * @author Panther
@@ -47,24 +45,17 @@ public class Rol {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public boolean equals(Object object) {
+        boolean isEquals=false;
+        if (object == this) {
+            isEquals=true;
         }
-        if (obj == null) {
-            return false;
+        if (object!= null && object instanceof Rol) {
+            Rol other = (Rol) object;
+            isEquals=this.getIdRol() == other.getIdRol() &&
+                    this.getDescripcion().equals(other.getDescripcion());
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Rol other = (Rol) obj;
-        if (this.idRol != other.idRol) {
-            return false;
-        }
-        if (!Objects.equals(this.descripcion, other.descripcion)) {
-            return false;
-        }
-        return true;
+        return isEquals;
     }
     
         
