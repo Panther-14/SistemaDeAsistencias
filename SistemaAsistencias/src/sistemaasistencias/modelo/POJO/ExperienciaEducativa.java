@@ -134,51 +134,26 @@ public class ExperienciaEducativa {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public boolean equals(Object object) {
+        boolean isEquals=false;
+        if (object == this) {
+            isEquals=true;
         }
-        if (obj == null) {
-            return false;
+        if (object!= null && object instanceof ExperienciaEducativa) {
+            ExperienciaEducativa other = (ExperienciaEducativa) object;
+            isEquals=this.getIdHorario()== other.getIdHorario()&&
+                    this.getNombreEE().equals(other.getNombreEE()) &&
+                    this.getNrc().equals(other.getNrc()) &&
+                    this.getCarera().equals(other.getCarera()) &&
+                    this.getLunes().equals(other.getLunes()) &&
+                    this.getMartes().equals(other.getMartes()) &&
+                    this.getMiercoles().equals(other.getMiercoles()) &&
+                    this.getJueves().equals(other.getJueves()) &&
+                    this.getViernes().equals(other.getViernes()) &&
+                    this.getSabado().equals(other.getSabado()) &&
+                    this.getDomingo().equals(other.getDomingo());
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ExperienciaEducativa other = (ExperienciaEducativa) obj;
-        if (this.idHorario != other.idHorario) {
-            return false;
-        }
-        if (!Objects.equals(this.nrc, other.nrc)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombreEE, other.nombreEE)) {
-            return false;
-        }
-        if (!Objects.equals(this.lunes, other.lunes)) {
-            return false;
-        }
-        if (!Objects.equals(this.martes, other.martes)) {
-            return false;
-        }
-        if (!Objects.equals(this.miercoles, other.miercoles)) {
-            return false;
-        }
-        if (!Objects.equals(this.jueves, other.jueves)) {
-            return false;
-        }
-        if (!Objects.equals(this.viernes, other.viernes)) {
-            return false;
-        }
-        if (!Objects.equals(this.sabado, other.sabado)) {
-            return false;
-        }
-        if (!Objects.equals(this.domingo, other.domingo)) {
-            return false;
-        }
-        if (!Objects.equals(this.carera, other.carera)) {
-            return false;
-        }
-        return true;
+        return isEquals;
     }
     
 }

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import sistemaasistencias.modelo.DataBaseConnection;
+import sistemaasistencias.modelo.ConexionBaseDeDatos;
 import sistemaasistencias.modelo.POJO.Rol;
 
 /**
@@ -15,7 +15,7 @@ import sistemaasistencias.modelo.POJO.Rol;
 public class RolDAO {
     public static ArrayList<Rol> obtenerRoles() throws SQLException{
         ArrayList<Rol> listaRoles = new ArrayList<Rol>();
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         String consulta = "SELECT * FROM rol;";
         try (Connection conexion = dataBase.getConexion()) {
             PreparedStatement prepararConsulta = conexion.prepareStatement(consulta);

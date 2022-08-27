@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import sistemaasistencias.modelo.POJO.Estudiante;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.modelo.POJO.Usuario;
-import sistemaasistencias.util.Constantes;
+import sistemaasistencias.constantes.Constantes;
 
 /**
  *

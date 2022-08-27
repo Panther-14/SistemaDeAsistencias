@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import sistemaasistencias.modelo.POJO.Rol;
 import sistemaasistencias.modelo.POJO.Usuario;
-import sistemaasistencias.util.Constantes;
+import sistemaasistencias.constantes.Constantes;
 
 /**
  *

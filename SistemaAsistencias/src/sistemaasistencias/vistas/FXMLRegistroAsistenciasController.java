@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import sistemaasistencias.modelo.DAO.AsistenciaDAO;
 import sistemaasistencias.modelo.POJO.Asistencia;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
-import sistemaasistencias.util.Utilidades;
+import sistemaasistencias.alertas.Alertas;
 
 /**
  * FXML Controller class
@@ -68,10 +68,10 @@ public class FXMLRegistroAsistenciasController implements Initializable {
                 infoEstudiantes.addAll(resultadoConsulta);
                 tbAlumnos.setItems(infoEstudiantes);
             }else{
-                Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+                Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
         } catch (SQLException ex) {
-            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     

@@ -29,7 +29,7 @@ import sistemaasistencias.modelo.POJO.Estudiante;
 import sistemaasistencias.modelo.POJO.Profesor;
 import sistemaasistencias.modelo.POJO.Rol;
 import sistemaasistencias.modelo.POJO.Usuario;
-import sistemaasistencias.util.Utilidades;
+import sistemaasistencias.alertas.Alertas;
 
 /**
  * FXML Controller class
@@ -154,12 +154,12 @@ public class FXMLRegistrarUsuarioController implements Initializable {
                 profesor.setUsuario(usuario);
                 profesor.setNombre(nombre);
                 profesor.setApellidoPaterno(apellidoPaterno);
-                profesor.setApellidodoMaterno(apellidoMaterno);
+                profesor.setApellidoMaterno(apellidoMaterno);
                 
                 try{
                     parseInt = Integer.parseInt(matricula);
                 }catch(NumberFormatException nfException){
-                    Utilidades.mostrarAlerta("Número de Empleado Incorrecto", "Debes ingresar un valor numérico", Alert.AlertType.WARNING);
+                    Alertas.mostrarAlerta("Número de Empleado Incorrecto", "Debes ingresar un valor numérico", Alert.AlertType.WARNING);
                     valido = false;
                 }
                 
@@ -192,7 +192,7 @@ public class FXMLRegistrarUsuarioController implements Initializable {
             escenarioPrincipal.setTitle("Inicio de Sesión");
             escenarioPrincipal.show();
         } catch (IOException ioException) {
-            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar la ventana de inicio de sesión", Alert.AlertType.ERROR);
+            Alertas.mostrarAlertaConfirmacion("Error", "No se puede cargar la ventana de inicio de sesión", Alert.AlertType.ERROR);
         }
     }
 
@@ -204,10 +204,10 @@ public class FXMLRegistrarUsuarioController implements Initializable {
             }else if(estudiante != null){
                 EstudianteDAO.registrarEstudiante(estudiante);
             }
-            Utilidades.mostrarAlerta("Usuario Registrado","Bienvenido al sistema.",Alert.AlertType.INFORMATION);
+            Alertas.mostrarAlerta("Usuario Registrado","Bienvenido al sistema.",Alert.AlertType.INFORMATION);
             irPantallaMenu();
         } catch (SQLException sqlException) {
-            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
         
     }
@@ -217,14 +217,14 @@ public class FXMLRegistrarUsuarioController implements Initializable {
         try {
             rolesList = RolDAO.obtenerRoles();
         } catch (SQLException ex) {
-            Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
         if(rolesList != null){
             listaRoles = FXCollections.observableArrayList();
             listaRoles.addAll(rolesList);
             cbRol.setItems(listaRoles);
         }else{
-            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar la lista de roles", Alert.AlertType.ERROR);
+            Alertas.mostrarAlertaConfirmacion("Error", "No se puede cargar la lista de roles", Alert.AlertType.ERROR);
         }
     }
     
@@ -236,7 +236,7 @@ public class FXMLRegistrarUsuarioController implements Initializable {
             escenarioPrincipal.setTitle("Menu");
             escenarioPrincipal.show();
         } catch (IOException ioException) {
-            Utilidades.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
+            Alertas.mostrarAlertaConfirmacion("Error", "No se puede cargar el menu", Alert.AlertType.ERROR);
         }
     }
 }

@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import encriptador.SHA_512;
-import sistemaasistencias.modelo.DataBaseConnection;
+import sistemaasistencias.modelo.ConexionBaseDeDatos;
 import sistemaasistencias.modelo.POJO.Rol;
 import sistemaasistencias.modelo.POJO.Usuario;
 import static sistemaasistencias.modelo.POJO.Usuario.usuarioLogin;
-import sistemaasistencias.util.Constantes;
+import sistemaasistencias.constantes.Constantes;
 
 /**
  *
@@ -18,7 +18,7 @@ import sistemaasistencias.util.Constantes;
 public class UsuarioDAO {
     public static Usuario iniciarSesion(String nombreUsuario, String contrasenia) throws SQLException{
         Usuario.usuarioLogin = new Usuario();
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         SHA_512 encriptador = new SHA_512();
         String consulta = "SELECT usuario.nombreUsuario,usuario.idRol,rol.descripcion FROM sistemaasistencias.usuario " +
                         "INNER JOIN rol " +
@@ -48,7 +48,7 @@ public class UsuarioDAO {
     }
     
     public static int registrarUsuario(Usuario usuarioRegistro) throws SQLException{
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         SHA_512 encriptador = new SHA_512();
         int verificacionRegistro;
         String consulta = "INSERT INTO usuario values(?,?,?);";

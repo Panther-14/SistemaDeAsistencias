@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.modelo.POJO.Profesor;
 import sistemaasistencias.modelo.POJO.Usuario;
-import sistemaasistencias.util.Constantes;
+import sistemaasistencias.constantes.Constantes;
 
 /**
  *
@@ -49,7 +49,7 @@ public class ProfesorDAOTest {
         
         profesorRegistro.setNombre("Juan");
         profesorRegistro.setApellidoPaterno("Perez");
-        profesorRegistro.setApellidodoMaterno("Marquez");
+        profesorRegistro.setApellidoMaterno("Marquez");
         profesorRegistro.setUsuario(usuario);
         int expResult = Constantes.CODIGO_OPERACION_CORRECTA;
         int result = ProfesorDAO.registrarProfesor(profesorRegistro);
@@ -82,7 +82,7 @@ public class ProfesorDAOTest {
         Profesor expResult = new Profesor();
         expResult.setNombre("Juan");
         expResult.setApellidoPaterno("Perez");
-        expResult.setApellidodoMaterno("Marquez");
+        expResult.setApellidoMaterno("Marquez");
         expResult.setNumeroEmpleado(0);
         Profesor result = ProfesorDAO.obtenerProfesor(nombreUsuario);
         assertEquals(expResult, result);

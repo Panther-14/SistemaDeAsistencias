@@ -19,7 +19,7 @@ import sistemaasistencias.modelo.POJO.Estudiante;
 import sistemaasistencias.modelo.POJO.ExperienciaEducativa;
 import sistemaasistencias.modelo.POJO.Profesor;
 import sistemaasistencias.modelo.POJO.Usuario;
-import sistemaasistencias.util.Utilidades;
+import sistemaasistencias.alertas.Alertas;
 
 /**
  * FXML Controller class
@@ -72,18 +72,18 @@ public class FXMLInscribirAEEController implements Initializable {
             try{
                 this.profesor = ProfesorDAO.obtenerProfesor(Usuario.usuarioLogin.getNombreUsuario());
             }catch(SQLException sqle){
-                Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+                Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
             txtNombre.setText(profesor.getNombre());
             txtApellidoPaterno.setText(profesor.getApellidoPaterno());
-            txtApellidoMaterno.setText(profesor.getApellidodoMaterno());
+            txtApellidoMaterno.setText(profesor.getApellidoMaterno());
             txtIdentificador.setText(Integer.toString(profesor.getNumeroEmpleado()));
         }else if (Usuario.usuarioLogin.getRol().getIdRol()==2){
             lbIdentificador.setText("Matricula");
             try{
                 this.estudiante = EstudianteDAO.obtenerEstudiante(Usuario.usuarioLogin.getNombreUsuario());
             }catch(SQLException sqle){
-                Utilidades.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+                Alertas.mostrarAlerta("Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             }
             txtNombre.setText(estudiante.getNombre());
             txtApellidoPaterno.setText(estudiante.getApellidoPaterno());
@@ -111,7 +111,7 @@ public class FXMLInscribirAEEController implements Initializable {
                 experienciaEducativas = ProfesorImparteEEDAO.obtenerExperienciaEducativaProfesor(profesor.getNumeroEmpleado());
             }
         } catch (SQLException ex) {
-            Utilidades.mostrarAlerta("(A)Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("(A)Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
             
         }
         for (int i = 0; i < experienciaEducativas.size(); i++) {
@@ -134,7 +134,7 @@ public class FXMLInscribirAEEController implements Initializable {
                 ProfesorImparteEEDAO.registrarEnExperiencia(this.experienciaEducativa.getNrc(), this.profesor.getNumeroEmpleado());
             }
         } catch (SQLException sqle) {
-            Utilidades.mostrarAlerta("(B)Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("(B)Error de conexion","No existe conexion con la base de datos.",Alert.AlertType.ERROR);
         }
     }
     
@@ -142,7 +142,7 @@ public class FXMLInscribirAEEController implements Initializable {
     private void registrarEnExperienciaEducativa(ActionEvent event) {
         if(validarHorario()){
             registrarInformacion();
-            Utilidades.mostrarAlerta("Registro Exitoso", "Se ha registrado correctamente", Alert.AlertType.INFORMATION);
+            Alertas.mostrarAlerta("Registro Exitoso", "Se ha registrado correctamente", Alert.AlertType.INFORMATION);
             Stage escenario = (Stage) txtApellidoMaterno.getScene().getWindow();
             escenario.close();
         }else{

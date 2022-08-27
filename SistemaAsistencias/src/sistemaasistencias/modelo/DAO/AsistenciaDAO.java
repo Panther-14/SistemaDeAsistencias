@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import sistemaasistencias.modelo.DataBaseConnection;
+import sistemaasistencias.modelo.ConexionBaseDeDatos;
 import sistemaasistencias.modelo.POJO.Asistencia;
 
 /**
@@ -15,7 +15,7 @@ import sistemaasistencias.modelo.POJO.Asistencia;
 public class AsistenciaDAO {
     public static ArrayList<Asistencia> obtenerAsistentes(String nrc) throws SQLException{
         ArrayList<Asistencia> listaEEHorarios = new ArrayList<>();
-        DataBaseConnection dataBase = new DataBaseConnection();
+        ConexionBaseDeDatos dataBase = new ConexionBaseDeDatos();
         String consulta = "SELECT estudiante.nombre,estudiante.apellidoPaterno,estudiante.apellidoMaterno,fecha,asistencias.nrc " +
                 "FROM sistemaasistencias.asistencias " +
                 "INNER JOIN estudiante " +
